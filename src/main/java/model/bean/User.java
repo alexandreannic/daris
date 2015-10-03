@@ -13,7 +13,7 @@ public class User
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	/**
 	 * Adresse email. Doit être unique dans la bdd.
@@ -55,13 +55,13 @@ public class User
 	private String picture;
 
 
-	public Integer getId()
+	public Long getId()
 	{
 		return id;
 	}
 
 
-	public void setId(Integer id)
+	public void setId(Long id)
 	{
 		this.id = id;
 	}

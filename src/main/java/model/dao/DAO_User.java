@@ -12,14 +12,11 @@ import model.bean.User;
 
 
 @Repository
-public class DAO_User
+public class DAO_User extends DAO<User, Long>
 {
-	@PersistenceContext
-	private EntityManager entityManager;
-
 
 	public List<User> findAll()
 	{
-		return entityManager.createQuery("SELECT u FROM User u").getResultList();
+		return em.createQuery("SELECT u FROM User u").getResultList();
 	}
 }

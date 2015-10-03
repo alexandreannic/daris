@@ -7,6 +7,8 @@
 <c:url value="/bonjour" var="url" />
 <a href="${url}">BONJOUR</a>
 <table border="1">
+
+<h1>${use.email}</h1>
 	<thead>
 		<tr>
 			<th>
