@@ -6,7 +6,19 @@
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<!-- Référence vers le repertoire contenant les jars externe. -->
+	<!-- http://charlie.cu.cc/2012/06/how-add-external-libraries-maven/ -->
+	<!-- <repositories> -->
+	<!-- <repository> -->
+	<!-- <id>in-project</id> -->
+	<!-- <name>In Project Repo</name> -->
+	<!-- <url>file://${project.basedir}/src/main/resources/lib</url> -->
+	<!-- </repository> -->
+	<!-- </repositories> -->
+
+
 	<dependencies>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -96,5 +108,39 @@
 			<artifactId>tiles-template</artifactId>
 			<version>3.0.5</version>
 		</dependency>
+
 	</dependencies>
+
+
+	<!-- LessCss compilateur et minimiseur -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.lesscss</groupId>
+				<artifactId>lesscss-maven-plugin</artifactId>
+				<version>1.7.0.1.1</version>
+				<configuration>
+					<sourceDirectory>${project.basedir}/src/main/webapp/assets/style</sourceDirectory>
+					<outputDirectory>${project.basedir}/src/main/webapp/assets/style/.css</outputDirectory>
+					<compress>true</compress>
+					<!--<watch>true</watch> -->
+					<!--<watchInterval>1000</watchInterval> -->
+					<includes>
+						<include>main.less</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+
 </project>
