@@ -1,0 +1,74 @@
+.ui-widget-overlay {
+    background: rgba(25,25,34,.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.ui-front {
+    z-index: 1;
+}
+
+.ui-dialog {
+	background: white;
+	padding: 8px 15px 10px 15px;
+	.box-shadow(2px 2px 5px 1px #424242);//#9b9b9b
+	border-color: silver;
+	position: absolute;
+}
+.ui-dialog-titlebar-close {
+	display: none;
+}
+.ui-dialog-titlebar {
+	border-bottom: 1px solid @color-div-light;
+	padding: 0 0 5px 10px;
+	margin: 0 -15px 20px -15px;
+}
+.ui-dialog-title {
+	font-size: 20px;
+	text-transform : uppercase;
+}
+//.ui-dialog-titlebar-close {
+	//float: right;
+	//background: none;
+	//padding: 0;
+	//border-radius: none;
+	//font:normal normal normal 14px/1 FontAwesome;
+	//color: black;
+	//
+	//.ui-button-text:before {
+	//	content:"\f00d";
+	//	color: grey;
+	//}
+//}
+
+.ui-dialog-buttonpane {
+	position: absolute;
+	top: 6px;
+	right: 0;
+}
+.ui-button {
+	background: none;
+	border: 0;
+	color: @color-font;
+	.transition(all, .1s);
+    font-family: 'FontAwesome';
+}
+.ui-button:hover {
+	color: @color-main;
+	transform: scale(1.2);
+	.transition(all, .1s);
+}
+.ui-dialog-buttonset {
+	margin-right: 10px;
+	
+	> .ui-button:first-child:before {
+		content:"\f0c7";
+		font-size: 22px;
+	}
+	> .ui-button:before {
+		content:"\f00d";
+		font-size: 22px;
+	}
+}

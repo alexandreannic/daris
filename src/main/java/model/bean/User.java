@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -18,21 +21,25 @@ public class User
 	/**
 	 * Adresse email. Doit être unique dans la bdd.
 	 */
+	@Email
 	private String email;
 
 	/**
 	 * Mot de passe encrypté.
 	 */
+	@NotEmpty
 	private String password;
 
 	/**
 	 * Prénom
 	 */
+	@NotEmpty
 	private String firstName;
 
 	/**
 	 * Nom de famille
 	 */
+	@NotEmpty
 	private String lastName;
 
 	/**

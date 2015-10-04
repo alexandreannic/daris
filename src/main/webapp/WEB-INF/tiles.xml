@@ -10,7 +10,12 @@
 	</definition>
 
 	<definition name="users" extends="base.definition">
-		<put-attribute name="title" value="Being Java Guys | Tiles Integration" />
+		<put-attribute name="title" value="" />
 		<put-attribute name="content" value="/view/users.jsp" />
+	</definition>
+	
+	<definition name="home" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="content" value="/view/home.jsp" />
 	</definition>
 </tiles-definitions>

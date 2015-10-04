@@ -28,7 +28,7 @@ public class DAO<T, ID extends Serializable>
 
 	public T find(final Object id)
 	{
-		return (T) this.em.find(type, id);
+		return (T) em.find(type, id);
 	}
 
 
@@ -40,7 +40,7 @@ public class DAO<T, ID extends Serializable>
 		queryString.append(type.getSimpleName()).append(" o ");
 		queryString.append(this.getQueryClauses(params, null));
 
-		final Query query = this.em.createQuery(queryString.toString());
+		final Query query = em.createQuery(queryString.toString());
 
 		return (Long) query.getSingleResult();
 
@@ -49,20 +49,21 @@ public class DAO<T, ID extends Serializable>
 
 	public T create(final T t)
 	{
-		this.em.persist(t);
+		em.persist(t);
+		em.flush();
 		return t;
 	}
 
 
 	public void delete(final Object id)
 	{
-		this.em.remove(this.em.getReference(type, id));
+		em.remove(em.getReference(type, id));
 	}
 
 
 	public T update(final T t)
 	{
-		return this.em.merge(t);
+		return em.merge(t);
 	}
 
 

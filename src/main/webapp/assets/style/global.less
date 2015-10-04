@@ -1,0 +1,50 @@
+:focus {
+	outline: 0 ! important;
+}
+
+body {
+	background: @color-bg;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 81.25%;
+	color: @color-font;
+	margin: 0 1px 0 0;
+	line-height: 22px;
+}
+
+a , a:hover , a:focus {
+	text-decoration: none;
+	color: inherit;
+}
+
+// Font awesome icones. La balise <i> est exclusivement utilisée 
+// pour afficher les icones font awesome. 
+i {
+	font-family: 'FontAwesome';
+	font-style: normal;
+	display: inline-block;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transform: translate(0, 0);
+//	-webkit-touch-callout: none;
+//	-webkit-user-select: none;
+//	-khtml-user-select: none;
+//	-moz-user-select: none;
+//	-ms-user-select: none;
+	user-select: none;
+	text-align: center;
+}
+
+
+// Reset the box-sizing
+//
+// Heads up! This reset may cause conflicts with some third-party widgets.
+// For recommendations on resolving such conflicts, see
+// http://getbootstrap.com/getting-started/#third-box-sizing
+* {
+  .box-sizing(border-box);
+}
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
