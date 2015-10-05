@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+
 <form:form id="form-signup" commandName="user" method="POST" action="signup">
 	<div class="form-field">
 		<label for="signup-firstName"><spring:message code="user.field.firstName"/></label>
@@ -18,6 +19,8 @@
 		<form:input id="signup-email" path="email" type="email"/>
 	</div>
 	
+	<br/>
+	
 	<div class="form-field">
 		<label for="signup-password" for="password"><spring:message code="user.field.password"/></label>
 		<form:input id="signup-password" path="password" type="password"/>
@@ -27,5 +30,4 @@
 		<label for="signup-confirm" for="password"><spring:message code="user.field.password.confirm"/></label>
 		<form:input id="signup-confirm" path="password" type="password"/>
 	</div>
-	<input type="submit"/>
 </form:form>

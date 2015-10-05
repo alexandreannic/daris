@@ -32,7 +32,9 @@ public class Users
 	public String index(ModelMap pModel)
 	{
 		pModel.addAttribute("user", new User());
-		return "home";
+		User u = (User) service.find((long) 1);
+		pModel.addAttribute("u", u);
+		return "home/home";
 	}
 
 

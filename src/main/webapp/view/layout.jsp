@@ -5,22 +5,33 @@
 <!doctype html>
 
 <html lang="fr">
-<head>
-	<title><tiles:insertAttribute name="title" ignore="true"/></title>  
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/assets/style/.css/main.css"/>"/>
-	<script src="<c:url value="/assets/script/jquery-2.1.4.js"/>"></script>
-	<script src="<c:url value="/assets/script/jquery-ui.js"/>"></script>
-</head>
-<body>
-	<nav id="sb">
+
+	<head>
+		<title><tiles:insertAttribute name="title" ignore="true"/></title>  
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/assets/style/.css/main.css"/>"/>
+		<script src="<c:url value="/assets/script/jquery-2.1.4.js"/>"></script>
+		<script src="<c:url value="/assets/script/jquery-ui.js"/>"></script>
+	    <script>
+	        <%-- Factorise quelques options pour JQuery dialog --%>
+	        $.extend($.ui.dialog.prototype.options, {
+	            autoOpen: false,
+	            modal: true,
+	            resizable: false,
+	            width: 500,
+	            show: {effect: 'fade', duration: 200},
+	        });
+	    </script>
+	</head>
+	
+	
+	<body>
+		
 		<tiles:insertAttribute name="sidebar"/>
-	</nav>
+		
+		<div id="content">
+			<tiles:insertAttribute name="content"/>
+		</div>  
+	</body>
 	
-	<div id="content">
-		<tiles:insertAttribute name="content"/>
-	</div>  
-	
-<!-- 	<script src="js/scripts.js"></script> -->
-</body>
 </html>

@@ -8,20 +8,6 @@
 <table border="1">
 
 <h1>${use.email}</h1>
-	<thead>
-		<tr>
-			<th>
-				<spring:message code="colonne.identifiant" />
-			</th>
-			<th>
-				<spring:message code="colonne.libelle" />
-			</th>
-			<th>
-				<spring:message code="colonne.quantite" />
-			</th>
-		</tr>
-	</thead>
-	<tbody>
 		<c:forEach items="${users}" var="user">
 			<tr>
 				<td>
@@ -35,5 +21,4 @@
 				</td>
 			</tr>
 		</c:forEach>
-	</tbody>
 </table>

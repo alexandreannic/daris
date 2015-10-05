@@ -1,0 +1,39 @@
+.panel {
+	background: white;
+	.box-shadow();
+    padding: @panel-padding;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+
+    .pages-controller {
+        position: absolute;
+        top: 9px;
+        right: 40px;
+        font-size: 22px;
+        border-right: 1px solid #e6e6e6;
+        padding-right: 6px;
+    }
+}
+.panel-position {
+    padding: @panel-padding;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+.panel-title {
+    color: @color-main;
+	white-space: nowrap;
+	margin: 0 -@panel-padding 10px -@panel-padding;
+	border-bottom: 1px solid @color-div-light;
+	padding: 0 10px 6px 10px;
+	font-weight: lighter;
+	font-size: 18px;
+    min-height: 32px;
+}
+.panel-actions {
+	float: right;
+	color: @color-div;
+	margin-left: 8px;
+    font-size: 20px;
+}
