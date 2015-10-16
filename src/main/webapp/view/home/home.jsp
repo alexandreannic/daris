@@ -12,6 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value="/assets/style/.css/home.css"/>"/>
 		<script src="<c:url value="/assets/script/jquery-2.1.4.js"/>"></script>
 		<script src="<c:url value="/assets/script/jquery-ui.js"/>"></script>
+		<script src="<c:url value="/assets/script/sha1.js"/>"></script>
+		<script src="<c:url value="/assets/script/validate.js"/>"></script>
 	    <script>
 	        <%-- Factorise quelques options pour JQuery dialog --%>
 	        $.extend($.ui.dialog.prototype.options, {
@@ -66,7 +68,6 @@
 	    </div>
 	    
 	    <%@ include file="home.js.jsp"%>
-	    
 	</body>
 
 </html>

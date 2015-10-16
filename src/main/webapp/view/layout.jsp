@@ -12,8 +12,9 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value="/assets/style/.css/main.css"/>"/>
 		<script src="<c:url value="/assets/script/jquery-2.1.4.js"/>"></script>
 		<script src="<c:url value="/assets/script/jquery-ui.js"/>"></script>
+		<script src="<c:url value="/assets/script/sha1.js"/>"></script>
 	    <script>
-	        <%-- Factorise quelques options pour JQuery dialog --%>
+	        <%-- Définis des options par défaut pour les JQuery dialogs --%>
 	        $.extend($.ui.dialog.prototype.options, {
 	            autoOpen: false,
 	            modal: true,

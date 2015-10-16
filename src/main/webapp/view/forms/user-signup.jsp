@@ -23,7 +23,8 @@
 	
 	<div class="form-field">
 		<label for="signup-password" for="password"><spring:message code="user.field.password"/></label>
-		<form:input id="signup-password" path="password" type="password"/>
+		<input id="signup-password" type="password"/>
+		<form:input id="signup-saltedPwd" type="hidden" path="password" />
 	</div>
 	
 	<div class="form-field">
@@ -31,3 +32,46 @@
 		<form:input id="signup-confirm" path="password" type="password"/>
 	</div>
 </form:form>
+
+
+
+<script>
+
+	$("#signup-firstName").validate({
+		required: true,
+		length: {
+			enabled: true,
+			minLength: 2,
+			maxLength: 5
+		}
+	});
+	
+	$("#signup-lastName").validate({
+		required: true,
+		length: {
+			enabled: true,
+			minLength: 2,
+			maxLength: 5
+		}
+	});
+	
+	$("#signup-email").validate({
+		required: true,
+		email: {
+			enabled: true
+		}
+	});	
+	
+	$("#signup-password").validate({
+		required: true,
+		length: {
+			enabled: true,
+			minLength: 2,
+			maxLength: 5
+		},
+		password: {
+			enabled: true,
+			equalsTo: "#signup-confirm"
+		}
+	});
+</script>

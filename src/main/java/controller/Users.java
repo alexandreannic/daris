@@ -27,27 +27,17 @@ public class Users
 		return "users";
 	}
 
-
-	@RequestMapping(value = "/home")
-	public String index(ModelMap pModel)
-	{
-		pModel.addAttribute("user", new User());
-		User u = (User) service.find((long) 1);
-		pModel.addAttribute("u", u);
-		return "home/home";
-	}
-
-
 	@Transactional
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String add(@Valid User user, BindingResult result)
 	{
+		System.out.println("PWD : " + user.getPassword());
 		if (result.hasErrors()) {
-			return "home";
+			return "/";
 		}
 		else {
 			service.create(user);
-			return "home";
+			return "/";
 		}
 	}
 }
