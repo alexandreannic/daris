@@ -8,16 +8,18 @@ import model.bean.User;
 
 
 @Controller
-public class Home
+public class Events
 {
-	@RequestMapping(value = "/")
-	public String index(ModelMap pModel, HttpSession session)
+	@RequestMapping(value = "/event")
+	public String event(ModelMap pModel, HttpSession session)
 	{
+		// TODO Certainement pas la bonne façon de gérer la session
 		User user = (User) session.getAttribute("user");
-		if(user != null) {
-			return "redirect:/dashboard";
+		
+		if(user == null) {
+			return "redirect:/";
 		}
-		pModel.addAttribute("user", new User());
-		return "home/home";
+		
+		return "event/event";
 	}
 }

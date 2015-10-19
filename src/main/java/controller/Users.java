@@ -39,7 +39,7 @@ public class Users
 			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok!");
 			return "redirect:/";
 		}
-		
+
 		flash.addFlashAttribute("NOTIFICATION_SUCCESS", "ok!");
 		service.create(user);
 		return "redirect:/";
@@ -47,38 +47,43 @@ public class Users
 
 
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String add(String email, String password, RedirectAttributes flash, HttpSession session)
+	public String signin(String email, String password, RedirectAttributes flash, HttpSession session)
 	{
-//		return "redirect:/dashboard";
-
 		// Verifie que les entrées sont valides
-		if(email.length() < 3 || email.length() > 32) {
+		if (email.length() < 3 || email.length() > 32) {
 			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok uname !");
 			return "redirect:/";
 		}
-		if(password.equals("")) {
+		if (password.equals("")) {
 			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok pwd null!");
 			return "redirect:/";
 		}
-		
+
 		User user = service.findByEmail(email);
-		
+
 		// Verifie que l'utilisateur existe
-		if(user == null) {
+		if (user == null) {
 			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok email !");
 			return "redirect:/";
 		}
-		
-		System.out.println("'" + user.getPassword() + "' \n '" + password + "'");
+
 		// Verifie que le mot de passe est correct
-		if(!user.getPassword().equals(password)) {
+		if (!user.getPassword().equals(password)) {
 			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok pwd !");
 			return "redirect:/";
 		}
-		
+
 		session.setAttribute("user", user);
-		
+
 		return "redirect:/dashboard";
+	}
+
+
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session)
+	{
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }

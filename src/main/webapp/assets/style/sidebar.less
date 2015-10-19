@@ -16,62 +16,156 @@
 	position: fixed;
     display: flex;
     flex-direction: column;
-    
-	::-webkit-scrollbar {
-		width: 4px;
-	}
+	//background-image: -moz-linear-gradient(30deg, lighten(@color-main, 10), darken(@color-main, 10));
+	//background-image: -webkit-linear-gradient(30deg, lighten(@color-main, 10), darken(@color-main, 10));
+	//background-image: -o-linear-gradient(30deg, lighten(@color-main, 10), darken(@color-main, 10));
+	//background-image: linear-gradient(60deg, lighten(@color-main, 10), darken(@color-main, 10));
 
-	::-webkit-scrollbar-thumb {
-		background: lighten(@color-main, 30%);
-	}
-
-	::-webkit-scrollbar-thumb:window-inactive {
-		background: lighten(@color-main, 30%);
-	}
+    // Scrollbar which appears on overflow
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: lighten(@color-main, 30%);
+    }
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: lighten(@color-main, 30%);
+    }
 }
-	
-	#sb-head {
-		border-bottom: 1px solid @color-border-section;
-	}
-	
-	#sb-foot {
-		border-top: 1px solid @color-border-section;
-		width: (@sidebar-width - @sidebar-padding * 2);
-		padding: @sidebar-padding;
-	}
+    #sb-head {
+        border-bottom: 1px solid @color-border-section;
+        //margin-bottom: @space-between-sections;
+        //padding-bottom: @space-between-sections;
+    }
 
-	.sb-ul {
-		flex: 1;
-		bottom: 70px;
-		overflow: hidden;
-		font-size: @font-size;
-		padding: 0;
-		margin: 4px 0 4px 0;
-	}
-	
-		.sb-li {
-			padding: 3px 0 3px 0;
-			display: block;
-			line-height: 32px;
-		}
-		
-		.sb-li-a {
-			display: block;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			&:hover {
-				background: darken(@color-main, 5%);
-			}
-		}
-	
-	.sb-i {
-		width: 44px;
-		text-align: center;
-		font-size: @font-size + 6;
-		margin-right: 2px;
-	}
-	
-	.sb-active {
-		background: darken(@color-main, 12) ! important;
-		color: white ! important;
-	}
+    #sb-footer {
+        //flex: 1;
+        border-top: 1px solid @color-border-section;
+        width: (@sidebar-width - @sidebar-padding * 2);
+        padding: @sidebar-padding;
+    }
+
+    // Menu
+    #sb-nav {
+        overflow-y: auto;
+    }
+    .sb-ul {
+        flex: 1;
+        bottom: 70px;
+        overflow: hidden;
+        font-size: @font-size;
+        padding: 0;
+        margin: 4px 0 4px 0;
+    }
+        .sb-li {
+        	cursor: pointer;
+            padding: 3px 0 3px 0;
+            //margin-top: 10px;
+            //width: 100%;
+            display: block;
+            line-height: 32px;
+            //border: 1px solid rgba(0,0,0,0);
+            //.transition(all, .3s);
+
+            &.sub {
+                border-top: none;
+                margin-top: 0;
+                padding: 1px 0 1px 0;
+            }
+        }
+            .sb-ul-a {
+                //height: 100%;
+                display: block;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                &:hover {
+                    background: darken(@color-main, 5%);
+                }
+            }
+            .sb-ul-a.sub {
+                padding-left: 14px;
+            }
+                .sb-ul-sub {
+                    font-size: @font-size - 1;
+                    border-bottom: 1px solid lighten(@color-main, 30%);
+                    padding:0 0 4px 0;
+                    margin-bottom: 6px;
+                    display: none;
+                }
+
+        .sb-sub-down {
+            color: lighten(@color-main, 30%);
+            float: right;
+            height: 32px;
+            width: 25px;
+            font-size: @font-size + 2;
+
+            &:before{content:"\f078"}
+            &:hover {
+                color: white;
+            }
+        }
+
+        .fa-chevron-right {
+            font-size: (@font-size - 3) !important;
+            width: 36px !important;
+        }
+
+        .sb-icon {
+            width: 44px;
+            text-align: center;
+            font-size: @font-size + 6;
+            margin-right: 2px;
+        }
+        .sb-active {
+            background: darken(@color-main, 12) !important;
+            color: white !important;
+        }
+        // Message count tooltip
+        #im-unreadCount {
+            float: right;
+            font-weight: bold;
+            font-size: 16px;
+            color: orange;
+            margin-right: 8px;
+        }
+
+#shop-exit {
+    color: lighten(@color-main, 30%);
+    float: right;
+    height: 32px;
+    width: 22px;
+    font-size: @font-size + 2;
+
+    &:hover {
+        color: white;
+    }
+}
+
+#sb-user {
+    vertical-align: middle;
+    line-height: 22px;
+}
+    #sb-photo-default {
+        .border-radius(50%);
+        background: silver;
+        height: @photo-size;
+        width: @photo-size;
+        margin: 8px;
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        color: grey;
+        font-size: 30px;
+        padding-top: 10px;
+
+        &:before{
+            content:"\f007"
+        }
+    }
+    #sb-user-name {
+        display: inline-block;
+        color: white;
+        vertical-align: middle;
+    }

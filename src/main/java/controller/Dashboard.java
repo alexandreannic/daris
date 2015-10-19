@@ -11,22 +11,21 @@ import model.bean.User;
 
 
 @Controller
-@Scope("session")
 public class Dashboard
 {
-	private User user = new User();
-	
-//	@ModelAttribute("user")
-//    public User getUser(HttpSession session) 
-//    {
-//        return (User) session.getAttribute("user");
-//    }
 
 
 	@RequestMapping(value = "/dashboard")
-	public String index(ModelMap pModel)
+	public String index(ModelMap pModel, HttpSession session)
 	{
-		System.out.println("user ! : " + user.getId());
+		// TODO Certainement pas la bonne façon de gérer la session
+		User user = (User) session.getAttribute("user");
+		
+		if(user == null) {
+			return "redirect:/";
+		}
+		
+		
 		return "dashboard/dashboard";
 	}
 }

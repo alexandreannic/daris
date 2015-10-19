@@ -13,4 +13,14 @@
 		<put-attribute name="title" value="" />
 		<put-attribute name="content" value="/view/users.jsp" />
 	</definition>
+	
+	<definition name="dashboard/dashboard" extends="base.definition">
+		<put-attribute name="title" value="Tableau de bord" />
+		<put-attribute name="content" value="/view/dashboard/dashboard.jsp" />
+	</definition>
+	
+	<definition name="event/event" extends="base.definition">
+		<put-attribute name="title" value="Evenements" />
+		<put-attribute name="content" value="/view/event/event.jsp" />
+	</definition>
 </tiles-definitions>
