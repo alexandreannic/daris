@@ -3,6 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
@@ -27,13 +28,4 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- Evite la caputre des fichiers statiques -->
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>default</servlet-name> -->
-<!-- 		<url-pattern>*.css</url-pattern> -->
-<!-- 	</servlet-mapping> -->
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>default</servlet-name> -->
-<!-- 		<url-pattern>*.js</url-pattern> -->
-<!-- 	</servlet-mapping> -->
 </web-app>

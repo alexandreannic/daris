@@ -19,4 +19,14 @@ public class DAO_User extends DAO<User, Long>
 	{
 		return em.createQuery("SELECT u FROM User u").getResultList();
 	}
+
+
+	public User findByEmail(String email)
+	{
+		return (User) em.createQuery(
+				"SELECT u "
+			+ 	"FROM User u "
+			+ 	"WHERE u.email = '" + email + "'"
+			).getSingleResult();
+	}
 }

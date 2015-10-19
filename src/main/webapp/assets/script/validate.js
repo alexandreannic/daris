@@ -5,10 +5,10 @@
  */
 function checkInputs(form)
 {
-	if(!form.find("input.error")) {
+	if(!form.find('input.error').length) {
 		return false;
 	}
-	if(!form.find("input.required")) {
+	if(!form.find('input.required').length) {
 		return false;
 	}
 	return true;
