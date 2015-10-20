@@ -48,8 +48,8 @@ signup_input_firstName.validate({
 	required: true,
 	length: {
 		enabled: true,
-		minLength: 2,
-		maxLength: 5
+		minLength: 3,
+		maxLength: 32
 	}
 });
 
@@ -57,8 +57,8 @@ signup_input_lastName.validate({
 	required: true,
 	length: {
 		enabled: true,
-		minLength: 2,
-		maxLength: 5
+		minLength: 3,
+		maxLength: 32
 	}
 });
 
@@ -74,7 +74,7 @@ signup_input_pwd.validate({
 	length: {
 		enabled: true,
 		minLength: 2,
-		maxLength: 5
+		maxLength: 32
 	},
 	password: {
 		enabled: true,

@@ -8,16 +8,26 @@ import model.bean.User;
 
 
 @Controller
-public class Home
+public class Pages
 {
 	@RequestMapping(value = "/")
 	public String index(ModelMap pModel, HttpSession session)
 	{
 		User user = (User) session.getAttribute("user");
-		if(user != null) {
-			return "redirect:/dashboard";
-		}
+		if (user != null) { return "redirect:/dashboard"; }
 		pModel.addAttribute("user", new User());
-		return "home/home";
+		return "index/index";
+	}
+
+
+	@RequestMapping(value = "/dashboard")
+	public String dashboard(ModelMap pModel, HttpSession session)
+	{
+		// TODO Certainement pas la bonne façon de gérer la session
+		User user = (User) session.getAttribute("user");
+
+		if (user == null) { return "redirect:/"; }
+
+		return "dashboard/dashboard";
 	}
 }

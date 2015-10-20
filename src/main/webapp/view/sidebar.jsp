@@ -52,7 +52,7 @@
 		<li class="sb-li">
 			<a class="sb-ul-a" href="<c:url value="event"/>">
 				<i class="fa-calendar-o sb-icon"></i>
-				<spring:message code="menu.events"/>
+				<spring:message code="menu.event"/>
 			</a>
 		</li>
 		
