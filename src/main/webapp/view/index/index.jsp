@@ -10,7 +10,7 @@
 	<head>
 		<title></title>
 		<meta charset='utf-8'>
-		<link rel='stylesheet' type='text/css' href='<c:url value='/assets/style/.css/home.css'/>'/>
+		<link rel='stylesheet' type='text/css' href='<c:url value='/assets/style/.css/index.css'/>'/>
 		<script src='<c:url value='/assets/script/jquery-2.1.4.js'/>'></script>
 		<script src='<c:url value='/assets/script/jquery-ui.js'/>'></script>
 		<script src='<c:url value='/assets/script/sha1.js'/>'></script>
@@ -29,6 +29,7 @@
 	
 	
 	<body>
+	    <%@ include file='../alert.jsp'%>
 		
 		<div id='content'>
 			<div id='home-wrap'>
@@ -56,7 +57,6 @@
 	    	<%@ include file='form/signup.jsp'%>
 	    </div>
 	    
-	    <%@ include file='../notification.jsp'%>
 	    <%@ include file='script/main.js.jsp'%>
 	    <%@ include file='script/signin.js.jsp'%>
 	    <%@ include file='script/signup.js.jsp'%>

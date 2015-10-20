@@ -32,7 +32,8 @@
 	
 	
 	<body>	
-	
+		<%@ include file='alert.jsp'%>
+			
 		<tiles:insertAttribute name="sidebar"/>
 		
 		<div id="content">

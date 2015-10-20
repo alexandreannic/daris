@@ -127,7 +127,7 @@
 					<!--<watchInterval>1000</watchInterval> -->
 					<includes>
 						<include>main.less</include>
-                        <include>home.less</include>
+                        <include>index.less</include>
 					</includes>
 				</configuration>
 				<executions>

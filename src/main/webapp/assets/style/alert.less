@@ -1,0 +1,74 @@
+#alert-hold {
+	flex: 1;
+}
+#alert-container {
+	margin-left: @sidebar-width;
+	flex-direction: column;
+	width: 300px;
+	position: fixed;
+	height: 100%;
+	top: 0;
+	display: flex;
+	z-index: 10;
+}
+	.alert {
+		color: darken(white, 10);
+		margin: 6px;
+		border-radius: 3px;
+		padding: 10px 4px 10px 12px;
+		background: rgba(0,0,0,0.7);
+		display: flex;
+		
+		&:before {
+			font-family: 'FontAwesome';
+			font-style: normal;
+			margin-right: 10px;
+			font-size: 24px;
+		}
+		
+		&.error { 
+			&:before {
+				content:"\f06a";
+				color: darken(@color-red, 5);
+			}
+		}
+		&.success {
+			&:before {
+				content:"\f058";
+				color: darken(@color-green, 5);
+			}
+		}
+		&.info {
+			&:before {
+				content:"\f05a";
+				color: lighten(#0880C1, 30);
+			}
+		}
+		&.loading {
+			&:before {
+				content:"\f110";
+				color: lighten(#0880C1, 30);
+				-webkit-animation:fa-spin 1s infinite steps(8);
+				animation:fa-spin 1s infinite steps(8);
+			}
+		}
+	}
+	.alert-content {
+		flex:1;
+	}
+	
+	i.alert-close {
+		color: darken(white, 10);
+		
+		&:before {
+			font-family: 'FontAwesome';
+			font-style: normal;
+			content:"\f00d";
+			margin-right: 6px;
+			text-align: right;
+			-webkit-text-stroke: 1px #464646; // Rend l'icone plus fin
+		}
+		&:hover {
+			color: white !important;
+		}
+	}

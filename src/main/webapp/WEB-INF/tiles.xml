@@ -10,9 +10,9 @@
 		<put-attribute name="content" value="" />
 	</definition>
 
-	<definition name="users" extends="base.definition">
-		<put-attribute name="title" value="" />
-		<put-attribute name="content" value="/view/users.jsp" />
+	<definition name="user/settings/settings" extends="base.definition">
+		<put-attribute name="title" cascade="true" value="menu.settings" />
+		<put-attribute name="content" value="/view/user/settings/settings.jsp" />
 	</definition>
 	
 	<definition name="dashboard/dashboard" extends="base.definition">

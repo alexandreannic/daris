@@ -21,41 +21,51 @@ public class Users
 	private DAO_User service;
 
 
-	@RequestMapping(value = "/users")
-	public String users(ModelMap pModel)
+	/**
+	 * Affiche la page permettant à un utilisateur de modifier ses paramêtres
+	 */
+	@RequestMapping(value = "/settings")
+	public String viewSetting(HttpSession session)
 	{
-		User u = (User) service.find((long) 1);
-		pModel.addAttribute("users", service.findAll());
-		pModel.addAttribute("personne", "Regis");
-		return "users";
+		
+		return "user/settings/settings";
 	}
 
 
+	/**
+	 * Ajoute un utilisateur
+	 * @user utilisateur s'étant inscrit 
+	 */
 	@Transactional
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String add(@Valid User user, BindingResult result, RedirectAttributes flash)
+	public String signup(@Valid User user, BindingResult result, RedirectAttributes flash)
 	{
 		if (result.hasErrors()) {
-			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok!");
+			flash.addFlashAttribute("ALERT_ERROR", "nok!");
 			return "redirect:/";
 		}
 
-		flash.addFlashAttribute("NOTIFICATION_SUCCESS", "ok!");
+		flash.addFlashAttribute("ALERT_SUCCESS", "ok!");
 		service.create(user);
 		return "redirect:/";
 	}
 
 
+	/**
+	 * Authentifie un utilisateur
+	 * @param email
+	 * @param password
+	 */
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signin(String email, String password, RedirectAttributes flash, HttpSession session)
 	{
 		// Verifie que les entrées sont valides
 		if (email.length() < 3 || email.length() > 32) {
-			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok uname !");
+			flash.addFlashAttribute("ALERT_ERROR", "nok uname !");
 			return "redirect:/";
 		}
 		if (password.equals("")) {
-			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok pwd null!");
+			flash.addFlashAttribute("ALERT_ERROR", "nok pwd null!");
 			return "redirect:/";
 		}
 
@@ -63,13 +73,13 @@ public class Users
 
 		// Verifie que l'utilisateur existe
 		if (user == null) {
-			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok email !");
+			flash.addFlashAttribute("ALERT_ERROR", "nok email !");
 			return "redirect:/";
 		}
 
 		// Verifie que le mot de passe est correct
 		if (!user.getPassword().equals(password)) {
-			flash.addFlashAttribute("NOTIFICATION_ERROR", "nok pwd !");
+			flash.addFlashAttribute("ALERT_ERROR", "nok pwd !");
 			return "redirect:/";
 		}
 
@@ -79,11 +89,15 @@ public class Users
 	}
 
 
+	/**
+	 * Deconnecte un utilisateur
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session)
 	{
 		session.invalidate();
 		return "redirect:/";
 	}
-
 }

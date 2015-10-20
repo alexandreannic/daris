@@ -5,7 +5,7 @@
 
 	<div id="sb-head">
 		
-		<div id="sb-user" class="sb-ul-a" onclick="$('#changePassword').dialog('open')">
+		<a id="sb-user" class="sb-ul-a" href="<c:url value="settings"/>">
 			<i id="sb-photo-default">
 			</i>
 
@@ -13,7 +13,7 @@
 				<c:out value="${sessionScope['scopedTarget.user'].firstName}" /><br/>
 				TODO Récupérer nom et prénom depuis session !
 			</span>
-        </div>
+        </a>
         
         
         <ul class="sb-ul">
@@ -44,7 +44,7 @@
 		<li class="sb-li">
 			<a class="sb-ul-a" href="<c:url value="dashboard"/>">
 				<i class="fa-home sb-icon"></i>
-				<spring:message code="menu.home"/>
+				<spring:message code="menu.dashboard"/>
 			</a>
 		</li>
 		
