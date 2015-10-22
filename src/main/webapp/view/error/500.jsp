@@ -10,38 +10,4 @@
 	<div id="wrapper-title"><spring:message code="${pageTitle}"/></div>
 </div>
 
-
-<div class="col-xs-12 col-md-8">
-	<div class="panel">
-		<h1 class="panel-title">Quelque chose</h1>
-		Blablabla
-	</div>
-</div>
-
-<div class="col-xs-12 col-md-4">
-	<div class="panel">
-		<h1 class="panel-title">Autre chose</h1>
-		Blablabla
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		geagea
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		geageagea
-		
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		geagae
-	</div>
-</div>
+<spring:message code="page.500.content"/>

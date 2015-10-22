@@ -1,3 +1,6 @@
+html {
+	height: 100%;
+}
 body {
 	background: @color-bg;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -5,10 +8,13 @@ body {
 	color: @color-font;
 	margin: 0;
 	line-height: 22px;
+	height: 100%;
+	display: flex;
 }
 
 #content {
 	padding-bottom: 15px;
+	flex: 1;
 }
 
 :focus {
@@ -18,6 +24,10 @@ body {
 a, a:hover , a:focus {
 	text-decoration: none;
 	color: inherit;
+}
+
+h1 {
+	font-weight: normal;
 }
 
 // Font awesome icones. La balise <i> est exclusivement utilisée 

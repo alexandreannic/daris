@@ -19,9 +19,7 @@ public class Pages
 	{
 		// Vérifie que l'utilisateur est bien connecté
 		User user = (User) session.getAttribute("user");
-		if (user != null) {
-			return "redirect:/dashboard";
-		}
+		if (user != null) { return "redirect:/dashboard"; }
 
 		// Envoi un bean vide à la vue pour générer un formulaire
 		// permettant de créer un utilisateur
@@ -40,10 +38,16 @@ public class Pages
 		// TODO Certainement pas la meilleure façon de gérer la session
 		User user = (User) session.getAttribute("user");
 
-		if (user == null) {
-			return "redirect:/";
-		}
+		if (user == null) { return "redirect:/"; }
 
 		return "dashboard/dashboard";
 	}
+
+
+	@RequestMapping(value = "/404")
+	public String error404(ModelMap pModel)
+	{
+		return "error/404";
+	}
+
 }

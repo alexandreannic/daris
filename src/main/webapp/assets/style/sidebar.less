@@ -3,14 +3,17 @@
 @space-between-sections: 6px;
 @font-size: 15px;
 
-#content {
-	margin-left: @sidebar-width;
+//#content {
+//	margin-left: @sidebar-width;
+//}
+
+#sb-container {
+	width: @sidebar-width;
 }
 #sb {
 	background: @color-main;
+	height: 100%;
 	width: @sidebar-width;
-    height: 100%;
-    float: left;
 	color: lighten(@color-main, 50%);
 	padding: @sidebar-padding;
 	position: fixed;

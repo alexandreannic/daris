@@ -2,8 +2,8 @@
 
 <%-- Retenir les elements dans des variables pour ne pas avoir à reparcourir le DOM --%>
 var signup_dialog = $('#signup-dialog');
-var signup_signup = $('#form-signup');
-var signup_open = $('#btn-signup');
+var signup_form = $('#form-signup');
+var signup_open = $('#signup-btn');
 var signup_input_pwd = $('#signup-password');
 var signup_input_pwdConfirm = $('#signup-confirm');
 var signup_input_salted = $('#signup-saltedPwd');
@@ -25,7 +25,7 @@ signup_dialog.dialog({
 			else {
 				signup_input_salted.val(CryptoJS.SHA1(signup_input_pwd.val()));
 				signup_input_pwd.val('');
-				signup_signup.submit();
+				signup_form.submit();
 			}
 		},
 		

@@ -2,26 +2,53 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-       
+
 <tiles-definitions>
+
+	<!-- Layout -->
 	<definition name="base.definition" template="/view/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="sidebar" value="/view/sidebar.jsp" />
 		<put-attribute name="content" value="" />
 	</definition>
 
+
+	<!-- Pages -->
+	<definition name="index/index" extends="base.definition">
+		<put-attribute name="title" cascade="true" value="menu.index" />
+		<put-attribute name="content" value="/view/index/index.jsp" />
+	</definition>
+
 	<definition name="user/settings/settings" extends="base.definition">
 		<put-attribute name="title" cascade="true" value="menu.settings" />
 		<put-attribute name="content" value="/view/user/settings/settings.jsp" />
 	</definition>
-	
+
 	<definition name="dashboard/dashboard" extends="base.definition">
 		<put-attribute name="title" cascade="true" value="menu.dashboard" />
 		<put-attribute name="content" value="/view/dashboard/dashboard.jsp" />
 	</definition>
-	
+
 	<definition name="event/event" extends="base.definition">
 		<put-attribute name="title" cascade="true" value="menu.event" />
 		<put-attribute name="content" value="/view/event/event.jsp" />
 	</definition>
+
+
+	<!-- Erreurs -->
+	<definition name="error/400" extends="base.definition">
+		<put-attribute name="title" cascade="true" value="page.400.title" />
+		<put-attribute name="content" value="/view/error/400.jsp" />
+	</definition>
+
+	<definition name="error/404" extends="base.definition">
+		<put-attribute name="title" cascade="true" value="page.404.title" />
+		<put-attribute name="content" value="/view/error/404.jsp" />
+	</definition>
+
+	<definition name="error/500" extends="base.definition">
+		<put-attribute name="title" cascade="true" value="page.500.title" />
+		<put-attribute name="content" value="/view/error/500.jsp" />
+	</definition>
+
 </tiles-definitions>

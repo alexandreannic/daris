@@ -24,7 +24,7 @@ $.widget('daris.validate', {
 		required: false,
 		length: {
 			enabled: false,
-			message: 'Nombre de caractères invalide',
+			message: 'Nombre de caractères invalides',
 			minLength: undefined,
 			maxLength: undefined
 		},
