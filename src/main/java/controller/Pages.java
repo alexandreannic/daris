@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import model.bean.User;
 
 
+/**
+ * Ce controlleur implémente différentes routes qui ne sont pas relatives à une
+ * entité.
+ * 
+ * @author Alexandre Annic
+ *
+ */
 @Controller
 public class Pages
 {
@@ -25,7 +32,7 @@ public class Pages
 		// permettant de créer un utilisateur
 		pModel.addAttribute("user", new User());
 
-		return "index/index";
+		return "index";
 	}
 
 
@@ -40,7 +47,7 @@ public class Pages
 
 		if (user == null) { return "redirect:/"; }
 
-		return "dashboard/dashboard";
+		return "dashboard";
 	}
 
 

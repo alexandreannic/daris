@@ -1,4 +1,4 @@
-<form:form id='form-signup' method='POST' action='signup' commandName='user'>
+<form:form id='form-signup' method='POST' action='user/signup' commandName='user'>
 
 	<div class='form-field'>
 		<label for='signup-firstName'><spring:message code='user.field.firstName'/></label>

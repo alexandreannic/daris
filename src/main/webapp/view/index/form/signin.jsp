@@ -1,4 +1,4 @@
-<form id='signin-form' method='POST' action='signin'>
+<form id='signin-form' method='POST' action='user/signin'>
 
 	<p class='field'>
 		<i class='field-i fa-user' title='<spring:message code='index.view.icon.email'/>'></i> 

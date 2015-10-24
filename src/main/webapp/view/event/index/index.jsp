@@ -1,5 +1,5 @@
 <%--
-	Cette page permet à un utilisateur de modifier ses préférences.
+	Cette page permet d'afficher, de trier et de rechercher les points di'intérêts.
 --%>
 <%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>

@@ -7,59 +7,67 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
+/**
+ * La classe User représente un utilisateur de l'application pouvant créer et
+ * participer à des événements.
+ * 
+ * @author Alexandre Annic
+ *
+ */
 @Entity
 @Table(name = "User")
 public class User
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long	id;
 
 	/**
 	 * Adresse email. Doit être unique dans la bdd.
 	 */
 	@Email
-	private String email;
+	private String	email;
 
 	/**
 	 * Mot de passe encrypté.
 	 */
-	@NotEmpty
-	private String password;
+	@NotBlank
+	private String	password;
 
 	/**
 	 * Prénom
 	 */
-	@NotEmpty
-	private String firstName;
+	@NotBlank
+	private String	firstName;
 
 	/**
 	 * Nom de famille
 	 */
-	@NotEmpty
-	private String lastName;
+	@NotBlank
+	private String	lastName;
 
 	/**
 	 * Ville de l'utilisateur. Il s'agit en pratique d'une constante puisque
 	 * l'application ne concerne que la ville de Paris. Cependant par soucis
 	 * d'évolutivité.
 	 */
-	private String city;
+	private String	city;
 
 	/**
 	 * Rue de numero de rue
 	 */
-	private String address;
+	private String	address;
 
 	/**
 	 * Code postal
 	 */
-	private String ZIPCode;
+	private String	ZIPCode;
 
-	private String picture;
+	private String	picture;
 
 
 	public Long getId()

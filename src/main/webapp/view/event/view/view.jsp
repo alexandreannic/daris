@@ -1,5 +1,5 @@
 <%--
-	Cette page permet à un utilisateur de modifier ses préférences.
+	Cette page affiche les informations concernant un événement.
 --%>
 <%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>

@@ -10,12 +10,18 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 
+/**
+ * Cette classe implémente les fonctions CRUD utilisées par toutes les entitées.
+ * 
+ * @author Alexandre Annic
+ *
+ */
 public class DAO<T, ID extends Serializable>
 {
 	@PersistenceContext
-	protected EntityManager em;
+	protected EntityManager	em;
 
-	private Class<T> type;
+	private Class<T>		type;
 
 
 	public DAO()
@@ -26,12 +32,22 @@ public class DAO<T, ID extends Serializable>
 	}
 
 
+	/**
+	 * Recherche l'entité T à partir de son identifiant.
+	 * @param id
+	 * @return
+	 */
 	public T find(final Object id)
 	{
 		return (T) em.find(type, id);
 	}
 
 
+	/**
+	 * Retourne le nombre d'entités stocké dans la base de données
+	 * @param params
+	 * @return
+	 */
 	public long countAll(final Map<String, Object> params)
 	{
 
@@ -47,6 +63,11 @@ public class DAO<T, ID extends Serializable>
 	}
 
 
+	/**
+	 * Sauvegarde une instance de l'entité T dans la base de données
+	 * @param t
+	 * @return
+	 */
 	public T create(final T t)
 	{
 		em.persist(t);

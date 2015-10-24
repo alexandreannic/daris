@@ -32,20 +32,29 @@
 	
 	
 	<body>
-	
 		<%@ include file='alert.jsp'%>
 		
 			
-		<%-- Affiche la sidebar uniquement si un utilisateur est connecté --%>
+		<%-- Affiche la sidebar uniquement si l'utilisateur est connecté --%>
 		<c:if test="${not empty sessionScope.user}">
 			<div id="sb-container">
-				<tiles:insertAttribute name="sidebar"/>
+				<%@ include file='sidebar.jsp'%>
 			</div>
 		</c:if>
 		
 		
-		<div id="content">
-			<tiles:insertAttribute name="content"/>
+		<div id="page">
+		
+			<%-- Affiche le wrapper uniquement si l'utilisateur est connecté --%>
+			<c:if test="${not empty sessionScope.user}">
+				<div id="wrapper">
+					<div id="wrapper-title"><spring:message code="${pageTitle}"/></div>
+				</div>
+			</c:if>
+		
+			<div id="content">
+				<tiles:insertAttribute name="content"/>
+			</div>
 		</div>  
 	</body>
 	

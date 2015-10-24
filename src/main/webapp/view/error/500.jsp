@@ -4,10 +4,4 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<c:set var="pageTitle"><tiles:getAsString name="title"/></c:set>
-
-<div id="wrapper">
-	<div id="wrapper-title"><spring:message code="${pageTitle}"/></div>
-</div>
-
 <spring:message code="page.500.content"/>
