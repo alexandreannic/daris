@@ -112,15 +112,15 @@ public class Locality
 	}
 
 
-	public Locality_type getLocality_type()
+	public Locality_type getType()
 	{
 		return type;
 	}
 
 
-	public void setLocality_type(Locality_type locality_type)
+	public void setType(Locality_type type)
 	{
-		this.type = locality_type;
+		this.type = type;
 	}
 
 

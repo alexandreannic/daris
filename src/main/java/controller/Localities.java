@@ -41,16 +41,23 @@ public class Localities
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String view(@PathVariable("id") Long id, HttpSession session, RedirectAttributes flash, ModelMap pModel)
 	{
+		// Ce serait dommage de ne pas voir le joli logo de chargement !
+		try {
+			Thread.sleep(500);
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 		// Vérifie que l'utilisateur est connecté
 		User user = (User) session.getAttribute("user");
-		if (user == null) { return "redirect:/"; }
+		if (user == null) { return ""; }
 
 		// Récupére le point d'intérêt
 		Locality locality = dao_locality.find(id);
-		if (locality == null) { return "redirect:/"; }
+		if (locality == null) { return ""; }
 
-		pModel.addAttribute("pageTitle", locality.getName());
-		System.out.println(locality.getName());
+		pModel.addAttribute("locality", locality);
 
 		return "locality/view";
 	}

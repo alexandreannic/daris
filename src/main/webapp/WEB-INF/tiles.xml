@@ -53,9 +53,7 @@
 		<put-attribute name="content" value="/view/locality/index/index.jsp" />
 	</definition>
 	
-	<definition name="locality/view" extends="base.definition">
-		<put-attribute name="title" value="" />
-		<put-attribute name="content" value="/view/locality/view/view.jsp" />
+	<definition name="locality/view" template="/view/locality/view/view.jsp">
 	</definition>
 	
 	

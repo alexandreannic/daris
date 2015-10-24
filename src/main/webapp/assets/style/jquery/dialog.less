@@ -29,6 +29,9 @@
 	font-size: 20px;
 	text-transform : uppercase;
 }
+.ui-dialog-content {
+    min-height: auto !important;
+}
 //.ui-dialog-titlebar-close {
 	//float: right;
 	//background: none;
@@ -71,6 +74,16 @@
 	}
 	> .ui-button:before {
 //		color: red;
+		-webkit-text-stroke: 1px white; // Rend les icones plus fin
+		content:"\f00d";
+		font-size: 22px;
+	}
+}
+.ui-dialog-btn-close {
+    float: right;
+    margin-right: 12px;
+    
+	&:before {
 		-webkit-text-stroke: 1px white; // Rend les icones plus fin
 		content:"\f00d";
 		font-size: 22px;

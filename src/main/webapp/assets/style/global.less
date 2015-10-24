@@ -53,6 +53,29 @@ i {
 	text-align: center;
 }
 
+.loading-logo {
+	font-size: 36px;
+	margin: auto;
+	width: 40px;
+    height: 40px;
+	font-family: 'FontAwesome';
+	
+	&:before {
+		content:"\f110";
+		color: lighten(#0880C1, 30);
+		-webkit-animation:fa-spin 1s infinite steps(8);
+		animation:fa-spin 1s infinite steps(8);
+	}
+}
+
+.dd {
+	font-weight: bold;
+	flex: 2;
+}
+
+.dt {
+	flex: 3;
+}
 
 // Reset the box-sizing
 //
