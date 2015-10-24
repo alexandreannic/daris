@@ -11,11 +11,15 @@
 	<div class="panel">
 		<h1 class="panel-title">Quelque chose</h1>
 		Blablabla
+		<br/>
+       	<a href="<c:url value="locality/view/1"/>">Page d'un point d'intérêt</a>
+		
 	</div>
 </div>
 
 <div class="col-xs-12 col-md-4">
 	<div class="panel">
+	
 		<h1 class="panel-title">Autre chose</h1>
 		Blablabla
 		<br>

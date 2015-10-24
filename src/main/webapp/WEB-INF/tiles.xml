@@ -45,6 +45,19 @@
 		<put-attribute name="content" value="/view/user/settings/settings.jsp" />
 	</definition>
 
+
+	<!-- Locality -->
+	
+	<definition name="locality/index" extends="base.definition">
+		<put-attribute name="title" value="event.view.index.title" />
+		<put-attribute name="content" value="/view/locality/index/index.jsp" />
+	</definition>
+	
+	<definition name="locality/view" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="content" value="/view/locality/view/view.jsp" />
+	</definition>
+	
 	
 	<!-- Erreurs -->
 	

@@ -7,6 +7,7 @@
 <div id="alert-container">
 	<div id="alert-hold"></div>
 </div>
+
 	
 <script>
 
@@ -19,6 +20,7 @@ $(function() {
 		alert_new_success("${ALERT_SUCCESS}");
 	</c:if>
 });
+
 
 
 var alert_container = $("#alert-container");
@@ -87,5 +89,8 @@ function alert_new_loading(message)
 	alert_new("loading", message);
 }
 	
+// alert_new_loading("coucou");
+// alert_new_loading("coucou");
+
 </script>
 

@@ -44,10 +44,107 @@ public class Locality
 	private String			picture;
 
 	@Enumerated(EnumType.STRING)
-	private Locality_type	locality_type;
+	private Locality_type	type;
 
 	private String			description;
 
 	@Range(min = 0, max = 5)
 	private Integer			note;
+
+
+	public Long getId()
+	{
+		return id;
+	}
+
+
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
+
+
+	public String getName()
+	{
+		return name;
+	}
+
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
+
+	public String getAddress()
+	{
+		return address;
+	}
+
+
+	public void setAddress(String address)
+	{
+		this.address = address;
+	}
+
+
+	public String getZIPCode()
+	{
+		return ZIPCode;
+	}
+
+
+	public void setZIPCode(String zIPCode)
+	{
+		ZIPCode = zIPCode;
+	}
+
+
+	public String getPicture()
+	{
+		return picture;
+	}
+
+
+	public void setPicture(String picture)
+	{
+		this.picture = picture;
+	}
+
+
+	public Locality_type getLocality_type()
+	{
+		return type;
+	}
+
+
+	public void setLocality_type(Locality_type locality_type)
+	{
+		this.type = locality_type;
+	}
+
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+
+	public Integer getNote()
+	{
+		return note;
+	}
+
+
+	public void setNote(Integer note)
+	{
+		this.note = note;
+	}
+
 }

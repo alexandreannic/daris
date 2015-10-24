@@ -27,6 +27,6 @@ public class Messages_i18n
 	 */
 	public String get(String id)
 	{
-		return messagesSource.getMessage("view.errorOccurred", null, LocaleContextHolder.getLocale());
+		return messagesSource.getMessage(id, null, LocaleContextHolder.getLocale());
 	}
 }

@@ -78,7 +78,7 @@ public class Users
 			return "redirect:/";
 		}
 		if (password.equals("")) {
-			flash.addFlashAttribute("ALERT_ERROR", messages.get("Veuillez saisir un mot de passe"));
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("user.controller.error.pwdEmpty"));
 			return "redirect:/";
 		}
 
@@ -86,13 +86,13 @@ public class Users
 
 		// Verifie que l'email existe
 		if (user == null) {
-			flash.addFlashAttribute("ALERT_ERROR", messages.get("L'adresse email n'existe pas"));
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("user.controller.error.emailNoExist"));
 			return "redirect:/";
 		}
 
 		// Verifie que le mot de passe est correct
 		if (!user.getPassword().equals(password)) {
-			flash.addFlashAttribute("ALERT_ERROR", messages.get("Le mot de passe est incorrect"));
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("user.controller.error.pwdIncorrect"));
 			return "redirect:/";
 		}
 

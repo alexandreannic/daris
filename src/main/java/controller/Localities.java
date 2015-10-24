@@ -1,16 +1,16 @@
 package controller;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import model.bean.Locality;
 import model.bean.User;
-import model.dao.DAO_User;
+import model.dao.DAO_Locality;
 
 
 /**
@@ -24,17 +24,34 @@ import model.dao.DAO_User;
 public class Localities
 {
 	@Autowired
-	private DAO_User dao_user;
-	
+	DAO_Locality dao_locality;
+
+
 	@RequestMapping(value = "/index")
 	public String index(HttpSession session)
 	{
+		// Vérifie que l'utilisateur est connecté
 		User user = (User) session.getAttribute("user");
+		if (user == null) { return "redirect:/"; }
 
-		if (user == null) {
-			return "redirect:/";
-		}
-		
 		return "locality/index";
+	}
+
+
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+	public String view(@PathVariable("id") Long id, HttpSession session, RedirectAttributes flash, ModelMap pModel)
+	{
+		// Vérifie que l'utilisateur est connecté
+		User user = (User) session.getAttribute("user");
+		if (user == null) { return "redirect:/"; }
+
+		// Récupére le point d'intérêt
+		Locality locality = dao_locality.find(id);
+		if (locality == null) { return "redirect:/"; }
+
+		pModel.addAttribute("pageTitle", locality.getName());
+		System.out.println(locality.getName());
+
+		return "locality/view";
 	}
 }
