@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import model.bean.User;
 import model.dao.DAO_User;
@@ -113,5 +114,19 @@ public class Users
 		session.invalidate();
 
 		return "redirect:/";
+	}
+	
+	@Transactional
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public String edit(User user, BindingResult result, RedirectAttributes flash, HttpSession session)
+	{		
+		User u = (User) session.getAttribute("user");
+		u.setFirstName(user.getFirstName());
+		u.setLastName(user.getLastName());
+		u.setAddress(user.getAddress());
+		u.setCity(user.getCity());
+		dao_user.update(u);
+
+		return "redirect:/user/settings";
 	}
 }
