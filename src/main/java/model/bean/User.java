@@ -1,11 +1,14 @@
 package model.bean;
 
-import java.util.List;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -23,173 +26,136 @@ public class User
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long		id;
+	private Long	userId;
 
 	/**
 	 * Adresse email. Doit être unique dans la bdd.
 	 */
 	@Email
-	private String		email;
+	private String	email;
 
 	/**
 	 * Mot de passe encrypté.
 	 */
 	@NotBlank
-	private String		password;
+	private String	password;
 
 	/**
 	 * Prénom
 	 */
 	@NotBlank
-	private String		firstName;
+	private String	firstName;
 
 	/**
 	 * Nom de famille
 	 */
 	@NotBlank
-	private String		lastName;
+	private String	lastName;
 
 	/**
 	 * Ville de l'utilisateur. Il s'agit en pratique d'une constante puisque
 	 * l'application ne concerne que la ville de Paris. Cependant par soucis
 	 * d'évolutivité.
 	 */
-	private String		city;
+	private String	city;
 
 	/**
 	 * Rue de numero de rue
 	 */
-	private String		address;
+	private String	address;
 
 	/**
 	 * Code postal
 	 */
-	private String		ZIPCode;
+	private String	ZIPCode;
 
-	private String		picture;
+	private String	picture;
 
 	/**
-	 * Users followed (Twitter like)
+	 * Table d'association : évènement - participant
 	 */
-//	private List<User>	followed;
+	@ManyToMany(mappedBy = "participants")
+	private Collection<Event> events;
 
-
-	public Long getId()
-	{
-		return id;
+	// Getters & Setters
+	public Long getUserId() {
+		return userId;
 	}
 
-
-	public void setId(Long id)
-	{
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-
-	public String getEmail()
-	{
+	public String getEmail() {
 		return email;
 	}
 
-
-	public void setEmail(String email)
-	{
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-	public String getPassword()
-	{
+	public String getPassword() {
 		return password;
 	}
 
-
-	public void setPassword(String password)
-	{
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-	public String getFirstName()
-	{
+	public String getFirstName() {
 		return firstName;
 	}
 
-
-	public void setFirstName(String firstName)
-	{
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-
-	public String getLastName()
-	{
+	public String getLastName() {
 		return lastName;
 	}
 
-
-	public void setLastName(String lastName)
-	{
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-
-	public String getCity()
-	{
+	public String getCity() {
 		return city;
 	}
 
-
-	public void setCity(String city)
-	{
+	public void setCity(String city) {
 		this.city = city;
 	}
 
-
-	public String getAddress()
-	{
+	public String getAddress() {
 		return address;
 	}
 
-
-	public void setAddress(String address)
-	{
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
-
-	public String getZIPCode()
-	{
+	public String getZIPCode() {
 		return ZIPCode;
 	}
 
-
-	public void setZIPCode(String zIPCode)
-	{
+	public void setZIPCode(String zIPCode) {
 		ZIPCode = zIPCode;
 	}
 
-
-	public String getPicture()
-	{
+	public String getPicture() {
 		return picture;
 	}
 
-
-	public void setPicture(String picture)
-	{
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 
+	public Collection<Event> getEvents() {
+		return events;
+	}
 
-//	public List<User> getFollowed()
-//	{
-//		return followed;
-//	}
-//
-//
-//	public void setFollowed(List<User> followed)
-//	{
-//		this.followed = followed;
-//	}
+	public void setEvents(Collection<Event> events) {
+		this.events = events;
+	}
+	
 }

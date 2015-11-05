@@ -12,12 +12,4 @@
 	
 </div>
 
-
-<div id='signup-dialog' title='<spring:message code="index.view.signup"/>' style='display:none'>
-	<%@ include file='form/signup.jsp'%>
-</div>
-
-
-<%@ include file='script/main.js.jsp'%>
 <%@ include file='script/signin.js.jsp'%>
-<%@ include file='script/signup.js.jsp'%>

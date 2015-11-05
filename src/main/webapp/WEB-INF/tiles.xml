@@ -11,7 +11,6 @@
 	</definition>
 
 
-
 	<!-- Pages -->
 	
 	<definition name="index" extends="base.definition">
@@ -24,17 +23,22 @@
 		<put-attribute name="content" value="/view/dashboard/dashboard.jsp" />
 	</definition>
 	
+	<definition name="admin" extends="base.definition">
+		<put-attribute name="title" value="menu.admin.index" />
+		<put-attribute name="content" value="/view/admin/admin.jsp" />
+	</definition>
+
+	<definition name="dashboardAdmin" extends="base.definition">
+		<put-attribute name="title" value="menu.admin.dashboard" />
+		<put-attribute name="content" value="/view/dashboardAdmin/dashboardAdmin.jsp" />
+	</definition>
+	
 	
 	<!-- Event -->
 	
-	<definition name="event/index" extends="base.definition">
-		<put-attribute name="title" value="menu.event" />
-		<put-attribute name="content" value="/view/event/index/index.jsp" />
-	</definition>
-	
-	<definition name="event/index" extends="base.definition">
-		<put-attribute name="title" value="menu.event" />
-		<put-attribute name="content" value="/view/event/view/view.jsp" />
+	<definition name="createEvent" extends="base.definition">
+		<put-attribute name="title" value="event.view.create.title" />
+		<put-attribute name="content" value="/view/event/create/index.jsp" />
 	</definition>
 
 
@@ -48,12 +52,14 @@
 
 	<!-- Locality -->
 	
-	<definition name="locality/index" extends="base.definition">
-		<put-attribute name="title" value="event.view.index.title" />
-		<put-attribute name="content" value="/view/locality/index/index.jsp" />
+	<definition name="localityView" extends="base.definition">
+		<put-attribute name="title" value="locality.view.view.title" />
+		<put-attribute name="content" value="/view/locality/view/view.jsp" />
 	</definition>
 	
-	<definition name="locality/view" template="/view/locality/view/view.jsp">
+	<definition name="createLocality" extends="base.definition">
+		<put-attribute name="title" value="locality.view.create.title" />
+		<put-attribute name="content" value="/view/locality/create/index.jsp" />
 	</definition>
 	
 	
