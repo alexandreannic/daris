@@ -50,7 +50,7 @@
 	        		.prop('title', tooltip)
 	        		.prop('id', id)
 	        		.prop('onclick', action)
-	        		.tooltip();
+// 	        		.tooltip();
 	        	
 	        	addWrapperElt(elt);
 	        }
