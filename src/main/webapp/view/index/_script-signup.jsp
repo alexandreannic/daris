@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <script>
 
-<%-- Retenir les elements dans des variables pour ne pas avoir à reparcourir le DOM --%>
+<%-- Retenir les elements dans des variables pour ne pas avoir Ã  reparcourir le DOM --%>
 var signup_dialog = $('#signup-dialog');
 var signup_form = $('#form-signup');
 var signup_open = $('#signup-btn');
@@ -12,12 +14,12 @@ var signup_input_lastName = $('#signup-lastName');
 var signup_input_email = $('#signup-email');
 
 
-<%-- Fenêtre d'inscription --%>
+<%-- FenÃªtre d'inscription --%>
 signup_dialog.dialog({
 	width: 500,
 	buttons:
 	{
-		<%-- Boutton de validation (pas de texte car un icone est définie en css) --%>
+		<%-- Boutton de validation (pas de texte car un icone est dÃ©finie en css) --%>
 		' ': function() {
 			if(checkInputs($(this))) {
 				signup_input_salted.val(CryptoJS.SHA1(signup_input_pwd.val()));
@@ -29,7 +31,7 @@ signup_dialog.dialog({
 			}
 		},
 		
-		<%-- Boutton de fermeture (pas de texte car un icone est définie en css) --%>
+		<%-- Boutton de fermeture (pas de texte car un icone est dÃ©finie en css) --%>
 		'': function() {
 			$(this).dialog('close');
 		}
@@ -37,13 +39,13 @@ signup_dialog.dialog({
 });
 
 
-<%-- Ouverture de la fenêtre d'inscription --%>
+<%-- Ouverture de la fenÃªtre d'inscription --%>
 signup_open.click(function() {
 	signup_dialog.dialog('open');
 });
 
 
-<%-- Vérification des inputs --%>
+<%-- VÃ©rification des inputs --%>
 signup_input_firstName.validate({
 	required: true,
 	length: {

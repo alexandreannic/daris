@@ -1,10 +1,9 @@
 <%--
-	Affiche une popup décrivant un point d'intérêt récupéré en AJAX.
-	Appelé la fonction locality_openPopup avec comme paramètre
-	l'identifiant du point d'intérêt à afficher.
+	Affiche une popup dÃ©crivant un point d'intÃ©rÃªt rÃ©cupÃ©rÃ© en AJAX.
+	AppelÃ© la fonction locality_openPopup avec comme paramÃ¨tre
+	l'identifiant du point d'intÃ©rÃªt Ã  afficher.
 --%>
-<%@ page language='java' contentType='text/html; charset=ISO-8859-1'
-	isELIgnored='false' pageEncoding='ISO-8859-1'%>
+<%@ page language='java' contentType='text/html; charset=UTF-8' isELIgnored='false' pageEncoding='UTF-8'%>
 <%@ taglib uri='http://tiles.apache.org/tags-tiles' prefix='tiles'%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri='http://www.springframework.org/tags' prefix='spring'%>

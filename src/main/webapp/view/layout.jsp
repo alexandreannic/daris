@@ -1,4 +1,4 @@
-<%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
+<%@ page language='java' contentType='text/html; charset=UTF-8' isELIgnored='false' pageEncoding='UTF-8'%>
 <%@ taglib uri='http://tiles.apache.org/tags-tiles' prefix='tiles'%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri='http://www.springframework.org/tags' prefix='spring'%>
@@ -20,7 +20,7 @@
 		<script src='<c:url value='/assets/script/sha1.js'/>'></script>
 		<script src='<c:url value='/assets/script/validate.js'/>'></script>
 	    <script>
-	        <%-- Définis des options par défaut pour les JQuery dialogs --%>
+	        <%-- DÃ©finis des options par dÃ©faut pour les JQuery dialogs --%>
 	        $.extend($.ui.dialog.prototype.options, {
 	            autoOpen: false,
 	            modal: true,
@@ -36,7 +36,7 @@
  	        	$('#wrapper-title').text(title);
  	        }
  	        
- 	       	<%-- Définit un titre indiqué par le controller --%>
+ 	       	<%-- DÃ©finit un titre indiquÃ© par le controller --%>
 	        <c:if test='${not empty pageTitle}'>
        			changeTitle('${pageTitle}');
 	        </c:if>
@@ -50,12 +50,12 @@
 	        		.prop('title', tooltip)
 	        		.prop('id', id)
 	        		.prop('onclick', action)
-// 	        		.tooltip();
+	        		.tooltip();
 	        	
 	        	addWrapperElt(elt);
 	        }
 	        
-	        <%-- Ajoute un élément au wrapper --%>
+	        <%-- Ajoute un Ã©lÃ©ment au wrapper --%>
 	        function addWrapperElt(elt) {
 	        	$("#wrapper-actions").append(elt);
 	        }
@@ -68,7 +68,7 @@
 		<%@ include file='alert.jsp'%>
 		
 			
-		<%-- Affiche la sidebar uniquement si l'utilisateur est connecté --%>
+		<%-- Affiche la sidebar uniquement si l'utilisateur est connectÃ© --%>
 		<c:if test='${not empty sessionScope.user}'>
 			<div id='sb-container'>
 				<%@ include file='sidebar.jsp'%>
@@ -78,7 +78,7 @@
 		
 		<div id='page'>
 		
-			<%-- Affiche le wrapper uniquement si l'utilisateur est connecté --%>
+			<%-- Affiche le wrapper uniquement si l'utilisateur est connectÃ© --%>
 			<c:if test='${not empty sessionScope.user}'>
 				<div id='wrapper'>
 					<h1 id='wrapper-title'><spring:message code='${title}'/></h1>

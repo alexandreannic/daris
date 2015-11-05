@@ -48,7 +48,7 @@ public class Localities
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
+		
 		// Vérifie que l'utilisateur est connecté
 		User user = (User) session.getAttribute("user");
 		if (user == null) { return ""; }

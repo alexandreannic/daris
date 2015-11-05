@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <form:form id='form-signup' method='POST' action='user/signup' commandName='user'>
 
 	<div class='form-field'>
