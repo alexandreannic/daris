@@ -7,17 +7,17 @@
 
 	<div id='panel-login' class='panel'>
 		<h1 id="panel-login-h1"><spring:message code='index.view.welcome'/></h1>
-	    <%@ include file='form/signin.jsp'%>
+	    <%@ include file='_form-signin.jsp'%>
 	</div>
 	
 </div>
 
 
 <div id='signup-dialog' title='<spring:message code="index.view.signup"/>' style='display:none'>
-	<%@ include file='form/signup.jsp'%>
+	<%@ include file='_form-signup.jsp'%>
 </div>
 
 
-<%@ include file='script/main.js.jsp'%>
-<%@ include file='script/signin.js.jsp'%>
-<%@ include file='script/signup.js.jsp'%>
+<%@ include file='_script.jsp'%>
+<%@ include file='_script-signin.jsp'%>
+<%@ include file='_script-signup.jsp'%>

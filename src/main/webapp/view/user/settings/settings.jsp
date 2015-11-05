@@ -7,68 +7,92 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/assets/style/view/userSetting.less"/>" />
-<script src="<c:url value="/assets/style/jquery/jquery-user.js"/>"></script>
-<script src="<c:url value="/daris/assets/script/validate.js"/>"></script>
-<script src="<c:url value="/daris/assets/script/sha1.js"/>"></script>
-<!-- panel resume -->
-<div class="col-sm-3" id="leftpanel">
-	sdfsdl
-</div>
-	<!-- panel information -->
-<div class="col-sm-9" id="rightpanel">
-	<ul class="tabs">
-		<li class="active" rel="tab1">Profile</li>
-		<li rel="tab2">Photo</li>
-		<li rel="tab3">Hobbie</li>
-	</ul>
-	<div class="tab_container">
-		<div class="tab_content" id="tab1">
-			<h3 style="margin-left: 15px; font-size:24px">
-				<i class="fa-3x fa-user"></i> About
-			</h3>
-			<div class="col-sm-6">
-				<label class="col-xs-3 dd">Nom</label>
-				<div class="col-xs-9 dt">${user.firstName }</div>
-			</div>
-			<div class="col-sm-6">
-				<label class="col-xs-3 dd">Prenom</label>
-				<div class="col-xs-9 dt">${user.lastName }</div>
-			</div>
-			<div class="col-sm-6">
-				<label class="col-xs-3 dd">Address</label>
-				<div class="col-xs-9 dt">${user.address }</div>
-			</div>
-			<div class="col-sm-6">
-				<label class="col-xs-3 dd">City</label>
-				<div class="col-xs-9 dt">${user.city }</div>
-			</div>
-			<div id="dialog-form" title="Modifie information">
-				<form:form id='edit-form' action='edit' commandName='user' methode='POST'>
-					<fieldset>
-						<label for="firstName">Nom</label> 
-							<input type="text" name="firstName" id="firstName" value="${user.firstName }"
-							class="text ui-widget-content ui-corner-all"> 
-						<label for="lastName">Prenom</label> 
-							<input type="text" name="lastName" id="lastName" value="${user.lastName }"
-							class="text ui-widget-content ui-corner-all"> 
-						<label for="address">Address</label> 
-							<input type="text" name="address" id="address" value="${user.address }"
-							class="text ui-widget-content ui-corner-all">
-						<label for="city">City</label> 
-							<input type="text" name="city" id="city" value="${user.city }"
-							class="text ui-widget-content ui-corner-all">
-					</fieldset>
-				</form:form>
-			</div>
-			<button id="edit-info">Modifie</button>
-		</div>
 
-		<!-- Profile -->
-		<div class="tab_content" id="tab2">test2</div>
-		<!-- #tab2 -->
-		<div class="tab_content" id="tab3">test3</div>
-		<!-- #tab3 -->
+
+<%-- Panel resume --%>
+
+<div class="col-sm-3">
+	<div id="leftpanel" class="panel">
+		<div class="panel-title">
+			fpoeaga
+		</div>
+		sdfsdl
 	</div>
 </div>
+
+
+
+<%-- Panel information --%>
+
+<div class="col-sm-9">
+	<div class="panel">
+		<div class="tabs tabs-panel">
+	
+			<ul class="tabs-ul">
+				<li class="tabs-li"><a href="#tab-profile"><spring:message code='user.view.settings.profile'/></a></li>
+				<li class="tabs-li"><a href="#tab-photo"><spring:message code='user.view.settings.photos'/></a></li>
+				<li class="tabs-li"><a href="#tab-hobby"><spring:message code='user.view.settings.hobbies'/></a></li>
+			</ul>
+			
+	
+			<div class="tab_content" id="tab-profile">
+				<h3 style="margin-left: 15px; font-size:24px">
+					<i class="fa-3x fa-user"></i> About
+				</h3>
+				<div class="form-field">
+					<span class="dd"><spring:message code='user.field.firstName'/></span>
+					<span class="dt">${user.firstName}</span>
+				</div>
+				<div class="form-field">
+					<span class="dd"><spring:message code='user.field.lastName'/></span>
+					<span class="dt">${user.lastName}</span>
+				</div>
+				<div class="form-field">
+					<span class="dd"><spring:message code='field.address'/></span>
+					<span class="dt">${user.address}</span>
+				</div>
+				<div class="form-field">
+					<span class="dd"><spring:message code='field.city'/></span>
+					<span class="dt">${user.city}</span>
+				</div>
+				
+				<div id="dialog-form" title="<spring:message code='view.edit'/>">
+					<form:form id='edit-form' action='edit' commandName='user' methode='POST'>
+						<div class="form-field">
+							<label for="firstName"><spring:message code='user.field.firstName'/></label> 
+							<input type="text" name="firstName" id="firstName" value="${user.firstName}">
+						</div>
+						
+						<div class="form-field">	
+							<label for="lastName"><spring:message code='user.field.lastName'/></label> 
+							<input type="text" name="lastName" id="lastName" value="${user.lastName}">
+						</div>
+						
+						<div class="form-field">	
+							<label for="address"><spring:message code='field.address'/></label> 
+							<input type="text" name="address" id="address" value="${user.address}" >
+						</div>
+						
+						<div class="form-field">	
+							<label for="city"><spring:message code='field.city'/></label> 
+							<input type="text" name="city" id="city" value="${user.city}">
+						</div>
+					</form:form>
+				</div>
+			</div>
+			
+	
+			<div class="tab_content" id="tab-photo">
+				test2
+			</div>
+			
+			
+			<div class="tab_content" id="tab-hobby">
+				test3
+			</div>
+				
+		</div>
+	</div>
+</div>
+
+<%@ include file='_script.jsp'%>

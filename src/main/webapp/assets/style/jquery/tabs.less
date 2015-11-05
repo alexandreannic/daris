@@ -1,0 +1,144 @@
+// General properties
+
+.tabs {
+	list-style: none;
+}
+.tabs-ul {
+	background: lighten(@color-bg, 5);
+	padding: 0;
+}
+.tabs-li {
+	&.error {
+		color: red !important;
+	}
+
+	&:hover {
+		background: lighten(@color-div-light, 5);
+	}
+	a {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+}
+.ui-tabs-active {
+	color: saturate(@color-main, 30%);
+	background: lighten(@color-div-light, 5);
+}
+
+
+// Tabs panel
+
+.tabs-panel {
+	margin: -6px -10px 10px -10px;
+	
+	.tabs-ul {
+		padding-left: 14px;
+		list-style: none;
+		background: white;
+		margin: 0 0 21px 0;
+		border-bottom: 1px solid darken(@color-div-light, 3);
+		font-size: 18px;
+		color: grey;
+	}
+	.tabs-li {
+		display: inline-block;
+		.transition(all, .3s, linear);
+		padding: 8px;
+		position: relative;
+
+		&:hover {
+			color: saturate(@color-main, 30%);
+			background: white;
+		}
+	}
+	.ui-tabs-active {
+		background: white;
+	}
+	.ui-tabs-active a:before, .ui-tabs-active a:after {
+		border: 8px solid transparent;
+		border-bottom-color: darken(@color-div-light, 9);
+		margin-top: 54px;
+		bottom: 0;
+		content: "";
+		height: 0;
+		left: 50%;
+		margin-left: -8px;
+		overflow: hidden;
+		position: absolute;
+		width: 0;
+	}
+	.ui-tabs-active a:after {
+		background: transparent;
+		border-bottom-color: white;
+		bottom: -1px;
+	}
+}
+
+
+// Vertical tabs
+
+.tabs-col {
+    .tabs-ul {
+        background: none;
+        margin: 10px 0 0 0;
+        padding: 0;
+    }
+	.tabs-li {
+		vertical-align: middle;
+		line-height: 36px;
+		height: 36px;
+		display: block;
+		font-size: 16px;
+        margin: 4px;
+        padding: 0 10px;
+	}
+    .tabs-i {
+        width: 30px;
+        text-align: center;
+    }
+}
+
+
+// Horizontal tabs
+
+.tabs-row {
+	.tabs-ul {
+		width: 100%;
+		display: flex;
+		border-right: 0;
+		list-style: none;
+		padding: 0;
+        border-left: 1px solid @color-div-light;
+	}
+	.tabs-li {
+		text-align: center;
+		flex: 1;
+		-webkit-flex: 1;
+		border-right: 1px solid @color-div-light;
+        border-top: 1px solid @color-div-light;
+        border-bottom: 1px solid @color-div-light;
+        background: lighten(@color-bg, 5);
+
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			padding: 6px 14px 6px 14px;
+            font-size: 16px;
+		}
+	}
+}
+
+
+// Tabs inside dialog and box
+
+.box .tabs ul,
+.ui-dialog .tabs ul,
+.row .tabs ul {
+
+	.ui-tabs-active a:after {
+		border-bottom-color: white;
+	}
+}
+

@@ -71,7 +71,7 @@ public class User
 	/**
 	 * Users followed (Twitter like)
 	 */
-	private List<User>	followed;
+//	private List<User>	followed;
 
 
 	public Long getId()
@@ -182,14 +182,14 @@ public class User
 	}
 
 
-	public List<User> getFollowed()
-	{
-		return followed;
-	}
-
-
-	public void setFollowed(List<User> followed)
-	{
-		this.followed = followed;
-	}
+//	public List<User> getFollowed()
+//	{
+//		return followed;
+//	}
+//
+//
+//	public void setFollowed(List<User> followed)
+//	{
+//		this.followed = followed;
+//	}
 }

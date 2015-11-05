@@ -5,10 +5,10 @@
  */
 function checkInputs(form)
 {
-	if(!form.find('input.error').length) {
+	if(form.find('input.error').length) {
 		return false;
 	}
-	if(!form.find('input.required').length) {
+	if(form.find('input.required').length) {
 		return false;
 	}
 	return true;
@@ -77,8 +77,24 @@ $.widget('daris.validate', {
 		}
 		
 		// Activer les vérifications
-		if(this.options.email.enabled) 		this._checkEmail();
-		if(this.options.length.enabled) 	this._checkLength();
+		if(this.options.email.enabled) {
+			this._on(this.element, {
+	            change: function () {
+	            	this._checkEmail();
+	            }
+			});
+		}
+		
+		if(this.options.length.enabled) {
+			this._checkLength();
+			
+			this._on(this.element, {
+	            change: function () {
+	            	this._checkLength();
+	            }
+			});
+		}
+		
 		if(this.options.password.enabled) 	this._checkPassword();
 	},
 	
@@ -121,39 +137,31 @@ $.widget('daris.validate', {
 	
 	_checkEmail: function()
 	{
-		this._on(this.element, {
-            change: function () {
-    			value = this.element.val();
-				var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-				
-				if(regex.test(value)) {
-					this._removeError(this.element, this.tooltip, 'email');
-				}
-				else {
-					this._addError(this.element, this.tooltip, 'email', this.options.email.message);
-          		}
-			}
-		});
+		var value = this.element.val();
+		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		
+		if(regex.test(value)) {
+			this._removeError(this.element, this.tooltip, 'email');
+		}
+		else {
+			this._addError(this.element, this.tooltip, 'email', this.options.email.message);
+		}
 	},
 	
 	
 	_checkLength: function()
 	{
-		this._on(this.element, {
-            change: function () {
-            	value = this.element.val();
-            	
-            	if(this.options.length.minLength && value.length < this.options.length.minLength) {
-            		this._addError(this.element, this.tooltip, 'length', this.options.length.message);
-            	}
-            	else if(this.options.length.maxLength && value.length > this.options.length.maxLength) {
-            		this._addError(this.element, this.tooltip, 'length', this.options.length.message);
-            	}
-            	else {
-            		this._removeError(this.element, this.tooltip, 'length');
-            	}
-            }
-		});
+    	var value = this.element.val();
+
+    	if(this.options.length.minLength && value.length < this.options.length.minLength) {
+    		this._addError(this.element, this.tooltip, 'length', this.options.length.message);
+    	}
+    	else if(this.options.length.maxLength && value.length > this.options.length.maxLength) {
+    		this._addError(this.element, this.tooltip, 'length', this.options.length.message);
+    	}
+    	else {
+    		this._removeError(this.element, this.tooltip, 'length');
+    	}
 	
 	},
 	

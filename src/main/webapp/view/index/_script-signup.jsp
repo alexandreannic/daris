@@ -20,12 +20,12 @@ signup_dialog.dialog({
 		<%-- Boutton de validation (pas de texte car un icone est définie en css) --%>
 		' ': function() {
 			if(checkInputs($(this))) {
-				alert('<spring:message code="view.checkInputs"/>');
-			}
-			else {
 				signup_input_salted.val(CryptoJS.SHA1(signup_input_pwd.val()));
 				signup_input_pwd.val('');
 				signup_form.submit();
+			}
+			else {
+				alert('<spring:message code="view.checkInputs"/>');
 			}
 		},
 		

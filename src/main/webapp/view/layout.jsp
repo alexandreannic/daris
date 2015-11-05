@@ -31,7 +31,6 @@
 	        });
 	        
 	        
-	        $(function() {
         		<%-- Permet de changer de titre dynamiquement --%>
 	 	        function changeTitle(title) {
 	 	        	$('title').text(title);
@@ -42,7 +41,25 @@
 		        <c:if test='${not empty pageTitle}'>
 	       			changeTitle('${pageTitle}');
 		        </c:if>
-	        });
+		        
+		        <%-- Ajoute un bouton au wrapper --%>
+		        function addWrapperBtn(id, btnClass, tooltip, action) {
+		        	var elt = $('<i>')
+		        		.addClass('wrapper-btn')
+		        		.addClass('i-btn')
+		        		.addClass(btnClass)
+		        		.prop('title', tooltip)
+		        		.prop('id', id)
+		        		.prop('onclick', action)
+// 		        		.tooltip();
+		        	
+		        	addWrapperElt(elt);
+		        }
+		        
+		        <%-- Ajoute un élément au wrapper --%>
+		        function addWrapperElt(elt) {
+		        	$("#wrapper-actions").append(elt);
+		        }
 	        
 	    </script>
 	</head>
@@ -65,7 +82,8 @@
 			<%-- Affiche le wrapper uniquement si l'utilisateur est connecté --%>
 			<c:if test='${not empty sessionScope.user}'>
 				<div id='wrapper'>
-					<div id='wrapper-title'><spring:message code='${title}'/></div>
+					<h1 id='wrapper-title'><spring:message code='${title}'/></h1>
+					<div id="wrapper-actions"></div>
 				</div>
 			</c:if>
 		
@@ -73,6 +91,7 @@
 				<tiles:insertAttribute name='content'/>
 			</div>
 		</div>
+		
 	</body>
 	
 </html>

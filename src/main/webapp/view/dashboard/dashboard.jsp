@@ -50,4 +50,4 @@
 	</div>
 </div>
 
-<%@ include file='../locality/view/get_view.jsp'%>
+<%@ include file='../locality/view/_asyny-get_view.jsp'%>
