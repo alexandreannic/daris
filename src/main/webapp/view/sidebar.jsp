@@ -11,7 +11,7 @@
 
 	<div id="sb-head">
 		
-		<a id="sb-user" class="sb-ul-a" href="<c:url value="user/settings"/>">
+		<a id="sb-user" class="sb-ul-a" href="<c:url value="/user/settings"/>">
 			<i id="sb-photo-default"></i>
 
 			<span id="sb-user-name">
@@ -24,7 +24,7 @@
         <ul class="sb-ul">
         
             <li class="sb-li">
-                <a class="sb-ul-a" href="<c:url value="user/logout"/>" id="menu-disconnect">
+                <a class="sb-ul-a" href="<c:url value="/user/logout"/>" id="menu-disconnect">
                     <i class="fa-power-off sb-icon"></i>
                     <spring:message code="menu.logout"/>
                 </a>

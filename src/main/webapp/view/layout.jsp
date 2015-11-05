@@ -15,7 +15,6 @@
 		<meta charset='utf-8'>
 		<link rel='shortcut icon' href='<c:url value='/assets/img/favicon.ico'/>' />
 		<link rel='stylesheet' type='text/css' href='<c:url value='/assets/style/.css/main.css'/>'/>
-<%-- 		<link rel='icon' type='image/png' href='<c:url value='/assets/img/favicon.png'/>' /> --%>
 		<script src='<c:url value='/assets/script/jquery-2.1.4.js'/>'></script>
 		<script src='<c:url value='/assets/script/jquery-ui.js'/>'></script>
 		<script src='<c:url value='/assets/script/sha1.js'/>'></script>
@@ -31,35 +30,35 @@
 	        });
 	        
 	        
-        		<%-- Permet de changer de titre dynamiquement --%>
-	 	        function changeTitle(title) {
-	 	        	$('title').text(title);
-	 	        	$('#wrapper-title').text(title);
-	 	        }
-	 	        
-	 	       	<%-- Définit un titre indiqué par le controller --%>
-		        <c:if test='${not empty pageTitle}'>
-	       			changeTitle('${pageTitle}');
-		        </c:if>
-		        
-		        <%-- Ajoute un bouton au wrapper --%>
-		        function addWrapperBtn(id, btnClass, tooltip, action) {
-		        	var elt = $('<i>')
-		        		.addClass('wrapper-btn')
-		        		.addClass('i-btn')
-		        		.addClass(btnClass)
-		        		.prop('title', tooltip)
-		        		.prop('id', id)
-		        		.prop('onclick', action)
-// 		        		.tooltip();
-		        	
-		        	addWrapperElt(elt);
-		        }
-		        
-		        <%-- Ajoute un élément au wrapper --%>
-		        function addWrapperElt(elt) {
-		        	$("#wrapper-actions").append(elt);
-		        }
+       		<%-- Permet de changer de titre dynamiquement --%>
+ 	        function changeTitle(title) {
+ 	        	$('title').text(title);
+ 	        	$('#wrapper-title').text(title);
+ 	        }
+ 	        
+ 	       	<%-- Définit un titre indiqué par le controller --%>
+	        <c:if test='${not empty pageTitle}'>
+       			changeTitle('${pageTitle}');
+	        </c:if>
+	        
+	        <%-- Ajoute un bouton au wrapper --%>
+	        function addWrapperBtn(id, btnClass, tooltip, action) {
+	        	var elt = $('<i>')
+	        		.addClass('wrapper-btn')
+	        		.addClass('i-btn')
+	        		.addClass(btnClass)
+	        		.prop('title', tooltip)
+	        		.prop('id', id)
+	        		.prop('onclick', action)
+	        		.tooltip();
+	        	
+	        	addWrapperElt(elt);
+	        }
+	        
+	        <%-- Ajoute un élément au wrapper --%>
+	        function addWrapperElt(elt) {
+	        	$("#wrapper-actions").append(elt);
+	        }
 	        
 	    </script>
 	</head>

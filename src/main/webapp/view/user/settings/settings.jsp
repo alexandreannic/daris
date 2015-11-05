@@ -35,7 +35,7 @@
 			</ul>
 			
 	
-			<div class="tab_content" id="tab-profile">
+			<div id="tab-profile">
 				<h3 style="margin-left: 15px; font-size:24px">
 					<i class="fa-3x fa-user"></i> About
 				</h3>
@@ -55,44 +55,26 @@
 					<span class="dd"><spring:message code='field.city'/></span>
 					<span class="dt">${user.city}</span>
 				</div>
-				
-				<div id="dialog-form" title="<spring:message code='view.edit'/>">
-					<form:form id='edit-form' action='edit' commandName='user' methode='POST'>
-						<div class="form-field">
-							<label for="firstName"><spring:message code='user.field.firstName'/></label> 
-							<input type="text" name="firstName" id="firstName" value="${user.firstName}">
-						</div>
-						
-						<div class="form-field">	
-							<label for="lastName"><spring:message code='user.field.lastName'/></label> 
-							<input type="text" name="lastName" id="lastName" value="${user.lastName}">
-						</div>
-						
-						<div class="form-field">	
-							<label for="address"><spring:message code='field.address'/></label> 
-							<input type="text" name="address" id="address" value="${user.address}" >
-						</div>
-						
-						<div class="form-field">	
-							<label for="city"><spring:message code='field.city'/></label> 
-							<input type="text" name="city" id="city" value="${user.city}">
-						</div>
-					</form:form>
-				</div>
 			</div>
 			
 	
-			<div class="tab_content" id="tab-photo">
+			<div id="tab-photo">
 				test2
 			</div>
 			
 			
-			<div class="tab_content" id="tab-hobby">
+			<div id="tab-hobby">
 				test3
 			</div>
 				
 		</div>
 	</div>
 </div>
+
+
+<div id="dialog-form" title="<spring:message code='view.edit'/>">
+	<%@ include file='_form-edit.jsp'%>
+</div>
+
 
 <%@ include file='_script.jsp'%>

@@ -6,6 +6,7 @@ $('.tabs').tabs();
 
 
 var settings_dialog = $('#dialog-form');
+var settings_dialog_btn = $('#edit-info');
 var settings_form = $('#edit-form');
 var settings_input_firstName = $('#firstName');
 var settings_input_lastName = $('#lastName');
@@ -50,14 +51,13 @@ settings_input_city.validate({
 
 
 settings_dialog.dialog({
-	heigth: 450,
 	buttons: {
 		' ': function() {
 			if(checkInputs($(this))) {
 				settings_form.submit();
 			}
 			else {
-				alert();
+				alert('<spring:message code="view.checkInputs"/>');
 			}
 		}, 		
 		'': function() {
@@ -71,7 +71,7 @@ settings_dialog.dialog({
 });
 
 
-$('#edit-info').click(function() {
+settings_dialog_btn.click(function() {
 	settings_dialog.dialog('open');
 });
 	
