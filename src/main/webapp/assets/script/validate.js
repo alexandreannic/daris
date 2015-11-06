@@ -77,7 +77,12 @@ $.widget('daris.validate', {
 		}
 		
 		// Activer les vérifications
+		var value = this.element.val();
+		
 		if(this.options.email.enabled) {
+			if(value.length > 0) 
+				this._checkEmail();
+			
 			this._on(this.element, {
 	            change: function () {
 	            	this._checkEmail();
@@ -86,7 +91,8 @@ $.widget('daris.validate', {
 		}
 		
 		if(this.options.length.enabled) {
-			this._checkLength();
+			if(value.length > 0)
+				this._checkLength();
 			
 			this._on(this.element, {
 	            change: function () {

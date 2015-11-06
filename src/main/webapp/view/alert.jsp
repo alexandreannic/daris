@@ -91,6 +91,7 @@ function alert_new_loading(message)
 	
 // alert_new_loading('coucou');
 // alert_new_loading('coucou');
+// alert_new_success("suc");
 
 </script>
 

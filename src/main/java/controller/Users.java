@@ -120,13 +120,21 @@ public class Users
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String edit(User user, BindingResult result, RedirectAttributes flash, HttpSession session)
 	{		
+		if (result.hasErrors()) {
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
+			return "redirect:/user/settings/";
+		}
+		
 		User u = (User) session.getAttribute("user");
 		u.setFirstName(user.getFirstName());
 		u.setLastName(user.getLastName());
 		u.setAddress(user.getAddress());
 		u.setCity(user.getCity());
+		
 		dao_user.update(u);
-
+		
+		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.edit"));
+		
 		return "redirect:/user/settings";
 	}
 }
