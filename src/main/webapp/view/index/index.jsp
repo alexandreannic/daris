@@ -6,7 +6,8 @@
 <div class='col-xs-12'>
 
 	<div id='panel-login' class='panel'>
-		<h1 id="panel-login-h1"><spring:message code='index.view.welcome'/></h1>
+<%-- 		<h1 id="panel-login-h1"><spring:message code='index.view.welcome'/></h1> --%>
+		<img id='logo' src='<c:url value="/assets/img/logo.jpg"/>'/>
 	    <%@ include file='_form-signin.jsp'%>
 	</div>
 	

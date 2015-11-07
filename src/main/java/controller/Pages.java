@@ -4,12 +4,14 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import model.bean.Activity;
 import model.bean.Event;
 import model.bean.Locality;
 import model.bean.User;
+import model.bean.User_relation;
 import model.dao.DAO_Locality;
 import model.dao.DAO_Message;
 
@@ -55,6 +57,7 @@ public class Pages
 	/**
 	 * Affiche le tableau de bord de l'utilisateur connecté
 	 */
+	@Transactional
 	@RequestMapping(value = "/dashboard")
 	public String dashboard(ModelMap pModel, HttpSession session)
 	{

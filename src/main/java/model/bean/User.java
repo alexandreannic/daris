@@ -3,6 +3,7 @@ package model.bean;
 import java.sql.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -79,8 +80,20 @@ public class User
 	@ManyToMany(mappedBy = "participants")
 	private List<Event>		events;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "from")
 	private List<Message>	messages;
+
+	// @OneToMany(mappedBy = "follower")
+	// private List<User_relation> followed = new ArrayList<>();
+
+	@JsonIgnore
+	@JoinTable(name = "user_relation")
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<User>		followed;
+
+//	@ManyToMany(mappedBy = "followed")
+//	private List<User>		followers;
 
 
 	public String getFullName()
@@ -89,10 +102,46 @@ public class User
 	}
 
 
+	public List<Message> getMessages()
+	{
+		return messages;
+	}
+
+
+	public void setMessages(List<Message> messages)
+	{
+		this.messages = messages;
+	}
+
+
 	public Long getId()
 	{
 		return id;
 	}
+
+
+	public List<User> getFollowed()
+	{
+		return followed;
+	}
+
+
+	public void setFollowed(List<User> followed)
+	{
+		this.followed = followed;
+	}
+
+
+//	public List<User> getFollowers()
+//	{
+//		return followers;
+//	}
+//
+//
+//	public void setFollowers(List<User> followers)
+//	{
+//		this.followers = followers;
+//	}
 
 
 	public void setId(Long id)
@@ -219,5 +268,4 @@ public class User
 	{
 		this.events = events;
 	}
-
 }

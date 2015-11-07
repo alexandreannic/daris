@@ -11,7 +11,7 @@
 
 	<div id="sb-head">
 		
-		<a id="sb-user" class="sb-ul-a" href="<c:url value="/user/settings"/>">
+		<a id="sb-user" class="sb-ul-a" href="<c:url value="/dashboard"/>">
 			<div id="sb-photo">
 				<c:choose>
 					<c:when test='${not empty sessionScope.user.picture}'>
@@ -33,17 +33,23 @@
         <ul class="sb-ul">
         
             <li class="sb-li">
-                <a class="sb-ul-a" href="<c:url value="/user/logout"/>" id="menu-disconnect">
-                    <i class="fa-power-off sb-icon"></i>
-                    <spring:message code="menu.logout"/>
-                </a>
-            </li>
-            
-            
-            <li class="sb-li">
                 <a class="sb-ul-a">
                     <i class="fa-bell sb-icon"></i>
                     <spring:message code="menu.notification"/>
+                </a>
+            </li>
+            
+            <li class="sb-li">
+                <a class="sb-ul-a" href='<c:url value="/user/settings"/>'>
+                    <i class="fa-cog sb-icon"></i>
+                    <spring:message code="menu.settings"/>
+                </a>
+            </li>
+            
+            <li class="sb-li">
+                <a class="sb-ul-a" href="<c:url value="/user/logout"/>" id="menu-disconnect">
+                    <i class="fa-power-off sb-icon"></i>
+                    <spring:message code="menu.logout"/>
                 </a>
             </li>
             
@@ -54,14 +60,6 @@
 	
 	
 	<ul id="sb-head">
-	
-		<li class="sb-li">
-			<a class="sb-ul-a" href="<c:url value="/dashboard"/>">
-				<i class="fa-home sb-icon"></i>
-				<spring:message code="menu.dashboard"/>
-			</a>
-		</li>
-		
 		
 		<li class="sb-li">
 			<a class="sb-ul-a" href="<c:url value="event/index"/>">

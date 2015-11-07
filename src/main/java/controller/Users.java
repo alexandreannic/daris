@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +50,13 @@ public class Users
 		return "user/settings";
 	}
 
+	
+	@RequestMapping(value = "/view/{id}")
+	public String view(@PathVariable("id") Long id, HttpSession session)
+	{
+
+		return "user/view";
+	}
 
 	/**
 	 * Ajoute un utilisateur
