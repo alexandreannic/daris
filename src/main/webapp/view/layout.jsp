@@ -21,6 +21,7 @@
 		<script src='<c:url value='/assets/script/sha1.js'/>'></script>
 		<script src='<c:url value='/assets/script/validate.js'/>'></script>
 		<script src='<c:url value='/assets/script/highcharts/highcharts.js'/>'></script>
+		<script src='<c:url value='/assets/script/jquery-ui.autosize.min.js'/>'></script>
 	    <script>
 	        <%-- Définis des options par défaut pour les JQuery dialogs --%>
 	        $.extend($.ui.dialog.prototype.options, {

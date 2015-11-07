@@ -1,0 +1,62 @@
+.tokens-container {
+	border-bottom: 1px solid @color-div;
+	padding-bottom: 8px;
+	margin-bottom: 15px;
+}
+    .tokens {
+        width: 430px;
+        display: inline-block;
+    }
+        .token-toggle:before {
+            content:"\f078";
+        }
+
+.token {
+	background: lighten(@color-bg, 5);
+	padding: 3px 6px;
+	display: inline-block;
+	border: 1px solid lighten(@color-div, 10);
+//	margin: 6px 3px 0 3px;
+	margin: 3px;
+
+    &.block {
+        display: block;
+    }
+    &.disabled {
+        opacity: .65;
+    }
+}
+    .token-img {
+        font-family: 'FontAwesome';
+        display: inline-block;
+        width: 50px;
+        line-height: 50px;
+        height: 50px;
+        font-size: 35px;
+        vertical-align: middle;
+        text-align: center;
+        color: darken(@color-main2, 30);
+        background: lighten(@color-main2, 10);
+        border: 1px solid lighten(@color-main2, 10);
+        margin-right: 6px;
+    }
+    .token-content {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 17px;
+    }
+        .token-title {
+            font-weight: bold;
+            color: @color-main;
+            line-height: 22px;
+            margin: 0;
+            font-size: 14px;
+        }
+    .token-i {
+        margin-left: 8px;
+        color: lighten(@color-font, 20);
+
+        &:hover:before { color: @color-font;}
+        &.add:before {content:"\f067";}
+        &.rm:before {content:"\f00d";}
+    }

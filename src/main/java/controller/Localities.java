@@ -140,7 +140,7 @@ public class Localities
 	@RequestMapping(value = "/getLocalities", method = RequestMethod.GET)
 	public @ResponseBody List<Locality> getLocalities(@RequestParam(value="info") String info)
 	{
-        return dao_locality.find(info);
+        return dao_locality.findAccordingTo(info);
 	}
 
 }

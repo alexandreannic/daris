@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import model.bean.Activity;
 import model.bean.Event;
@@ -45,20 +47,19 @@ public class Events
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.pleaseConnect"));
-			return "redirect:/"; 
+			return "redirect:/";
 		}
 
 		// Récupére l'évènement
 		Event event = dao_event.find(id);
-		if (event == null) { 
+		if (event == null) {
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.ressourceNotExists"));
 			return "redirect:/dashboard";
 		}
-		
+
 		pModel.addAttribute("event", event);
 		pModel.addAttribute("activities", event.getActivities());
 		pModel.addAttribute("participantList", event.getParticipants());
-
 
 		return "event/view";
 	}
@@ -104,11 +105,21 @@ public class Events
 	{
 		// Vérifie que l'utilisateur est connecté
 		User user = (User) session.getAttribute("user");
-		if (user == null) { return "redirect:/dashbiard"; }
+		if (user == null) { 
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.pleaseConnect"));
+			return "redirect:/"; 
+		}
 
 		// Supprimer l'évènement
 		dao_event.remove(eventId);
 
 		return "dashboard";
+	}
+
+
+	@RequestMapping(value = "/getEvents", method = RequestMethod.GET)
+	public @ResponseBody List<Event> getEvents(@RequestParam(value = "info") String info)
+	{
+		return dao_event.findAccordingTo(info);
 	}
 }

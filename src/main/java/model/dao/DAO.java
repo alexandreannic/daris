@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,8 +37,13 @@ public class DAO<T, ID extends Serializable>
 	 */
 	public T find(final Object id)
 	{
-		System.out.println(id);
 		return (T) em.find(type, id);
+	}
+	
+	public List<T> findAll()
+	{
+        return em.createQuery("Select t from " + type.getSimpleName() + " t").getResultList();
+
 	}
 
 

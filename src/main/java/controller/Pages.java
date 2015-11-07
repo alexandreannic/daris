@@ -11,6 +11,7 @@ import model.bean.Event;
 import model.bean.Locality;
 import model.bean.User;
 import model.dao.DAO_Locality;
+import model.dao.DAO_Message;
 
 
 /**
@@ -22,6 +23,9 @@ public class Pages
 {	
 	@Autowired
 	private DAO_Locality	dao_locality;
+	
+	@Autowired
+	private DAO_Message 	dao_message;
 	
 	/**
 	 * Si l'utilisateur n'est pas connecté : affiche la page d'accueil Sinon
@@ -57,6 +61,8 @@ public class Pages
 		User user = (User) session.getAttribute("user");
 
 		if (user == null) { return "redirect:/"; }
+		
+		pModel.addAttribute("messages", dao_message.findAllForUser(user));
 
 		return "dashboard";
 	}

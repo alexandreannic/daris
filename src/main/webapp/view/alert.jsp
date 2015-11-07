@@ -64,30 +64,32 @@ function alert_new(type, message)
 	alert.mouseleave(function() {
 		alert.delay(1000).fadeOut(6000);
 	});
+	
+	return alert;
 }
 
 
 function alert_new_error(message)
 {
-	alert_new('error', message);
+	return alert_new('error', message);
 }
 
 
 function alert_new_success(message)
 {
-	alert_new('success', message);
+	return alert_new('success', message);
 }
 
 
 function alert_new_info(message)
 {
-	alert_new('info', message);
+	return alert_new('info', message);
 }
 
 
 function alert_new_loading(message)
 {
-	alert_new('loading', message);
+	return alert_new('loading', message);
 }
 	
 // alert_new_loading('coucou');

@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 
@@ -51,6 +52,7 @@ public class Event
 	/**
 	 * Liste des participants
 	 */
+	@JsonIgnore
 	@JoinTable(name = "event_participant")
 	@ManyToMany
 	private List<User>		participants;
@@ -58,8 +60,9 @@ public class Event
 	/**
 	 * Liste des activités prévues
 	 */
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "event")
-//	@OneToMany(fetch = FetchType.EAGER)
+	// @OneToMany(fetch = FetchType.EAGER)
 	private List<Activity>	activities	= new ArrayList<>();;
 
 	/**

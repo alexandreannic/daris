@@ -1,3 +1,80 @@
 #msg-add {
 	width: 100%;
 }
+#msg-new-text,
+#new-msg-to {
+	background-color: @input-bg;
+	border: 1px solid @input-bordercolor;
+	padding: 0 5px 0 5px;
+	transition: border linear 0.2s, box-shadow linear 0.2s;
+	
+	&:focus {
+		transition: border linear 0.2s, box-shadow linear 0.2s;
+		background-color: @input-focus-bg;
+		border: 1px solid @color-main2;
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+	}
+}
+
+.tokens-input {
+	color: #66B5D2;
+	background: none;
+	border: none;
+	height: 16px;
+	overflow: visible;
+	padding-left: 0;
+	
+	&:focus {
+		box-shadow: none;
+		border: none;
+		background: none;
+	}
+}
+
+#msg-new-text {
+	min-height: 60px;
+	
+	&.error {
+		background: @error-color-bg;
+		border: 1px solid @error-color-border;
+		color: @error-color-font;
+		&:focus {
+	    	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px lighten(@error-color-border, 10);
+    	}
+	}
+}
+
+@msg-img-size: 60px;
+
+.msg {
+	background: white;
+	.box-shadow();
+    padding: @panel-padding;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+	.msg-photo {
+	    overflow: hidden;
+		height: @msg-img-size;
+		width: @msg-img-size;
+	 	.border-radius(50%);
+	 	text-align: center;
+	 	margin-right: 10px;
+	}
+		.msg-photo-img {
+			width: 100%;
+			height: 100%;
+		}
+	.msg-content {
+		flex: 1;
+	}
+		.msg-from {
+			font-size: 17px;
+			color: @color-main;
+		}
+		.msg-date {
+			color: @color-div;
+			font-style: normal;
+			float: right;
+		}

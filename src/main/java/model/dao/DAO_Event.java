@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import model.bean.Event;
 import model.bean.Locality;
+import model.bean.User;
 
 
 /**
@@ -35,6 +36,7 @@ public class DAO_Event extends DAO<Event, Long>
 		
 	}
 	
+	
 	public List<Event> findByLocality(Locality loc)
 	{
 		List results = em.createQuery(
@@ -51,6 +53,19 @@ public class DAO_Event extends DAO<Event, Long>
 		if (results.isEmpty()) 	return null;
 		else 					return results;
 	}
+	
+	
+	/**
+	 * Recherche un event à partir d'une partie du nom
+	 * 
+	 * @return
+	 */
+	public List<Event> findAccordingTo(String info)
+	{
+		List<Event> all = em.createQuery("SELECT e FROM Event e WHERE e.name LIKE '%" + info + "%'").getResultList();
+		return (List<Event>) all;
+	}
+	
 	
 	public List<Event> findByDate(Date date)
 	{

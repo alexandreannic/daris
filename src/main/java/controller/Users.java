@@ -15,8 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import model.bean.Locality;
 import model.bean.User;
 import model.bean.User_stats;
 import model.dao.DAO_User;
@@ -173,5 +175,11 @@ public class Users
 		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.edit"));
 
 		return "redirect:/user/settings";
+	}
+	
+	@RequestMapping(value = "/getUsers", method = RequestMethod.GET)
+	public @ResponseBody List<User> getUsers(@RequestParam(value="info") String info)
+	{
+        return dao_user.findAccordingTo(info);
 	}
 }

@@ -15,14 +15,5 @@ import model.bean.Activity;
 @Repository
 public class DAO_Activity extends DAO<Activity, Long>
 {
-	/**
-	 * Methode permettant de récupérer toutes les localités
-	 * 
-	 * @return liste des activités récupérés
-	 */
-	public List<Activity> findAll()
-	{
-		return em.createQuery("SELECT a FROM Activity a").getResultList();
-	}
 
 }

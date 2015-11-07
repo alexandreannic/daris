@@ -30,7 +30,7 @@ public class DAO_Locality extends DAO<Locality, Long>
 	 * 
 	 * @return
 	 */
-	public List<Locality> find(String info)
+	public List<Locality> findAccordingTo(String info)
 	{
 		List<Locality> all = em.createQuery("SELECT l FROM Locality l WHERE l.name LIKE '%" + info + "%'").getResultList();
 		return (List<Locality>) all;
