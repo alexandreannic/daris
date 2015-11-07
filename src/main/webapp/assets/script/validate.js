@@ -17,7 +17,7 @@ function checkInputs(form)
 
 
 /**
- * Plugin
+ * Plugin permettant de vérifier le contenu des inputs
  */
 $.widget('daris.validate', {
 	options: {
@@ -42,6 +42,11 @@ $.widget('daris.validate', {
 			enabled: false,
 			message: 'Différent',
 			equalsTo: undefined
+		},
+		regex: {
+			enabled: true,
+			message: 'Invalide',
+			regex: undefined
 		}
 	},
 	
@@ -101,6 +106,17 @@ $.widget('daris.validate', {
 			});
 		}
 		
+		if(this.options.regex.enabled) {
+			if(value.length > 0)
+				this._checkRegex();
+			
+			this._on(this.element, {
+	            change: function () {
+	            	this._checkRegex();
+	            }
+			});
+		}
+		
 		if(this.options.password.enabled) 	this._checkPassword();
 	},
 	
@@ -139,19 +155,17 @@ $.widget('daris.validate', {
 			}
 		});
 	},
-	
+
 	
 	_checkEmail: function()
 	{
 		var value = this.element.val();
 		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		
-		if(regex.test(value)) {
+		if(regex.test(value))
 			this._removeError(this.element, this.tooltip, 'email');
-		}
-		else {
+		else
 			this._addError(this.element, this.tooltip, 'email', this.options.email.message);
-		}
 	},
 	
 	
@@ -168,8 +182,19 @@ $.widget('daris.validate', {
     	else {
     		this._removeError(this.element, this.tooltip, 'length');
     	}
-	
 	},
+	
+	
+	_checkRegex: function()
+	{
+		var value = this.element.val();
+		
+		if(this.options.regex.regex.test(value))
+			this._removeError(this.element, this.tooltip, 'email');
+		else
+			this._addError(this.element, this.tooltip, 'email', this.options.regex.message);
+	},
+	
 	
 	/**
 	 * @input 	Input ne contenant plus l'erreur de type @type

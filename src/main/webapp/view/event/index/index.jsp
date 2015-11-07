@@ -1,7 +1,7 @@
 <%--
-	Cette page permet d'afficher, de trier et de rechercher les points di'intÃ©rÃªts.
+	Cette page permet d'afficher, de trier et de rechercher les points di'intérêts.
 --%>
-<%@ page language='java' contentType='text/html; charset=UTF-8' isELIgnored='false' pageEncoding='UTF-8'%>
+<%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>

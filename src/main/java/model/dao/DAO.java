@@ -12,9 +12,6 @@ import javax.persistence.Query;
 
 /**
  * Cette classe implémente les fonctions CRUD utilisées par toutes les entitées.
- * 
- * @author Alexandre Annic
- *
  */
 public class DAO<T, ID extends Serializable>
 {
@@ -39,6 +36,7 @@ public class DAO<T, ID extends Serializable>
 	 */
 	public T find(final Object id)
 	{
+		System.out.println(id);
 		return (T) em.find(type, id);
 	}
 

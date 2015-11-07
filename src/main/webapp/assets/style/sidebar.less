@@ -1,5 +1,5 @@
 @color-border-section: lighten(@color-main, 40%);
-@photo-size: 48px;
+@photo-size: 65px;
 @space-between-sections: 6px;
 @font-size: 15px;
 
@@ -126,7 +126,7 @@
             background: darken(@color-main, 12) !important;
             color: white !important;
         }
-        // Message count tooltip
+        // Notif count tooltip
         #im-unreadCount {
             float: right;
             font-weight: bold;
@@ -135,40 +135,42 @@
             margin-right: 8px;
         }
 
-#shop-exit {
-    color: lighten(@color-main, 30%);
-    float: right;
-    height: 32px;
-    width: 22px;
-    font-size: @font-size + 2;
-
-    &:hover {
-        color: white;
-    }
-}
-
 #sb-user {
     vertical-align: middle;
     line-height: 22px;
+    display: flex;
+    align-items: center;
+ 	justify-content: center;
 }
-    #sb-photo-default {
-        .border-radius(50%);
-        background: silver;
-        height: @photo-size;
-        width: @photo-size;
-        margin: 8px;
-        text-align: center;
-        display: inline-block;
-        vertical-align: middle;
-        color: grey;
-        font-size: 30px;
-        padding-top: 10px;
-
-        &:before{
-            content:"\f007"
-        }
-    }
+	#sb-photo {
+	 	.border-radius(50%);
+	 	height: @photo-size;
+		width: @photo-size;
+	    overflow: hidden;
+	    border: 2px solid @color-border-section;
+	    margin-right: 7px;
+     	background: silver;
+	}
+		#sb-photo-img {
+			height: @photo-size;
+			width: @photo-size;	
+		}
+	    #sb-photo-default {
+	        margin-top: 8px;
+	        text-align: center;
+	        vertical-align: middle;
+	        color: grey;
+	        font-size: 30px;
+	        padding-top: 10px;
+	        width: 100%;
+	        height: 100%;
+	
+	        &:before{
+	            content:"\f007"
+	        }
+	    }
     #sb-user-name {
+    	flex: 1;
         display: inline-block;
         color: white;
         vertical-align: middle;

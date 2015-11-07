@@ -1,7 +1,7 @@
 <%--
 	Menu de l'interface des utilisateurs
  --%>
-<%@ page language='java' contentType='text/html; charset=UTF-8' isELIgnored='false' pageEncoding='UTF-8'%>
+<%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -12,8 +12,17 @@
 	<div id="sb-head">
 		
 		<a id="sb-user" class="sb-ul-a" href="<c:url value="/user/settings"/>">
-			<i id="sb-photo-default"></i>
-
+			<div id="sb-photo">
+				<c:choose>
+					<c:when test='${not empty sessionScope.user.picture}'>
+						<img id="sb-photo-img" src="/daris/assets/img/users/${sessionScope.user.picture}"/>
+					</c:when>
+					<c:otherwise>
+						<i id="sb-photo-default"></i>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			
 			<span id="sb-user-name">
 				${sessionScope.user.firstName}<br/>
 				${sessionScope.user.lastName}
@@ -44,7 +53,7 @@
 	
 	
 	
-	<ul id="sb-nav">
+	<ul id="sb-head">
 	
 		<li class="sb-li">
 			<a class="sb-ul-a" href="<c:url value="/dashboard"/>">
@@ -66,6 +75,20 @@
 			<a class="sb-ul-a" href="#">
 				<i class="fa-envelope sb-icon"></i>
 				<spring:message code="menu.message"/>
+			</a>
+		</li>
+		
+		<li class="sb-li">
+			<a class="sb-ul-a"href="<c:url value="/event/view/1"/>">
+				<i class="fa-envelope sb-icon"></i>
+				<spring:message code="menu.message"/>
+			</a>
+		</li>
+		
+		<li class="sb-li">
+			<a class="sb-ul-a" href="<c:url value="/createEvent"/>">
+				<i class="fa-plus sb-icon"></i>
+				<spring:message code="menu.addEvent"/>
 			</a>
 		</li>
 		

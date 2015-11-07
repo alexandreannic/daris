@@ -1,10 +1,12 @@
 package model.bean;
 
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -13,9 +15,6 @@ import org.hibernate.validator.constraints.NotBlank;
 /**
  * La classe User représente un utilisateur de l'application pouvant créer et
  * participer à des événements.
- * 
- * @author Alexandre Annic
- *
  */
 @Entity
 @Table(name = "User")
@@ -68,10 +67,13 @@ public class User
 
 	private String		picture;
 
+	private Date		inscription;
+
 	/**
-	 * Users followed (Twitter like)
+	 * Table d'association : évènement - participant
 	 */
-//	private List<User>	followed;
+	@ManyToMany(mappedBy = "participants")
+	private List<Event>	events;
 
 
 	public Long getId()
@@ -182,14 +184,27 @@ public class User
 	}
 
 
-//	public List<User> getFollowed()
-//	{
-//		return followed;
-//	}
-//
-//
-//	public void setFollowed(List<User> followed)
-//	{
-//		this.followed = followed;
-//	}
+	public Date getInscription()
+	{
+		return inscription;
+	}
+
+
+	public void setInscription(Date inscription)
+	{
+		this.inscription = inscription;
+	}
+
+
+	public List<Event> getEvents()
+	{
+		return events;
+	}
+
+
+	public void setEvents(List<Event> events)
+	{
+		this.events = events;
+	}
+
 }

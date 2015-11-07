@@ -1,10 +1,15 @@
 package controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -13,15 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import model.bean.User;
+import model.bean.User_stats;
 import model.dao.DAO_User;
 import utils.Messages_i18n;
 
 
 /**
  * Ce controller implémente l'ensemble des routes relatives à un utilisateur.
- * 
- * @author Alexandre Annic
- *
  */
 @Controller
 @RequestMapping(value = "/user")
@@ -83,6 +86,12 @@ public class Users
 			return "redirect:/";
 		}
 
+		// Vérifie admin
+		if (email.equals("admin") && password.equals("d033e22ae348aeb5660fc2140aec35850c4da997")) {
+			session.setAttribute("session_admin", true);
+			return "redirect:/";
+		}
+
 		User user = dao_user.findByEmail(email);
 
 		// Verifie que l'email existe
@@ -99,7 +108,34 @@ public class Users
 
 		session.setAttribute("user", user);
 
-		return "redirect:/dashboard";
+		return "redirect:/";
+	}
+
+
+	@RequestMapping(value = "/getStats")
+	public @ResponseBody List<User_stats> getShopInJSON()
+	{
+		String dateFormat = messages.get("dateFormat");
+		SimpleDateFormat format = new SimpleDateFormat(dateFormat);
+		
+		List<User_stats> stats = new ArrayList<>();
+		
+		Calendar calendar = Calendar.getInstance();
+		
+		for(int i = 1; i <= calendar.get(Calendar.DAY_OF_MONTH); i++) {
+			Calendar day = Calendar.getInstance();
+			day.set(Calendar.DAY_OF_MONTH, i);
+			
+			User_stats stat = new User_stats();
+			stat.setDay(format.format(day.getTime()));
+			
+			Map<String, Object> args = new HashMap<String, Object>();
+			args.put("inscription",  new Date(day.getTimeInMillis()));
+			stat.setCount(dao_user.countAll(args));
+			
+			stats.add(stat);
+		}
+		return stats;
 	}
 
 
@@ -115,26 +151,27 @@ public class Users
 
 		return "redirect:/";
 	}
-	
+
+
 	@Transactional
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String edit(User user, BindingResult result, RedirectAttributes flash, HttpSession session)
-	{		
+	{
 		if (result.hasErrors()) {
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
 			return "redirect:/user/settings/";
 		}
-		
+
 		User u = (User) session.getAttribute("user");
 		u.setFirstName(user.getFirstName());
 		u.setLastName(user.getLastName());
 		u.setAddress(user.getAddress());
 		u.setCity(user.getCity());
-		
+
 		dao_user.update(u);
-		
+
 		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.edit"));
-		
+
 		return "redirect:/user/settings";
 	}
 }

@@ -1,7 +1,8 @@
 package model.dao;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
-import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import model.bean.User;
 
@@ -9,8 +10,6 @@ import model.bean.User;
 /**
  * Cette classe implémente les fonctions permettant d'accèder aux données
  * peristantes concernant un utilisateur.
- * @author Alexandre Annic
- *
  */
 @Repository
 public class DAO_User extends DAO<User, Long>
@@ -34,4 +33,15 @@ public class DAO_User extends DAO<User, Long>
 		if (results.isEmpty()) 	return null;
 		else 					return (User) results.get(0);
 	}
+	
+//	public Long getCountByDate(Calendar calendar)
+//	{
+//		Date date = new Date(calendar.getTimeInMillis();
+//		
+//		return em.createQuery(
+//				"SELECT COUNT(u) "
+//			+ 	"FROM User u "
+//			+	"WHERE u.date = '" + date + "'"
+//		).getSingleResult();
+//	}
 }

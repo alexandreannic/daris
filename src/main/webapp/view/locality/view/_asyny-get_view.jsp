@@ -1,9 +1,9 @@
 <%--
-	Affiche une popup dÃ©crivant un point d'intÃ©rÃªt rÃ©cupÃ©rÃ© en AJAX.
-	AppelÃ© la fonction locality_openPopup avec comme paramÃ¨tre
-	l'identifiant du point d'intÃ©rÃªt Ã  afficher.
+	Affiche une popup décrivant un point d'intérêt récupéré en AJAX.
+	Appelé la fonction locality_openPopup avec comme paramètre
+	l'identifiant du point d'intérêt à afficher.
 --%>
-<%@ page language='java' contentType='text/html; charset=UTF-8' isELIgnored='false' pageEncoding='UTF-8'%>
+<%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
 <%@ taglib uri='http://tiles.apache.org/tags-tiles' prefix='tiles'%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri='http://www.springframework.org/tags' prefix='spring'%>
@@ -41,10 +41,10 @@ function locality_openPopup(id)
 	locality_popup.dialog('open');
 	
 	$.ajax({
-	    type : 'GET',
-	    url : 'locality/view/' + id,
+	    type: 'GET',
+	    url: '/daris/locality/view/' + id,
 
-	    error : function() {
+	    error: function() {
 	    	loading_icon.remove();
 	    	locality_popup.append(
     			$('<div>')
@@ -56,7 +56,7 @@ function locality_openPopup(id)
  				)
  			);
 	    },
-	    success : function(result) {
+	    success: function(result) {
 	    	loading_icon.remove();
 	    	locality_popup.append(result);
 	    }

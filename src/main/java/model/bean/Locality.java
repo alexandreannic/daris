@@ -6,20 +6,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.Table;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
 
 /**
  * La classe Locality représente un point d'interêt référencé par l'application
  * tel qu'un musée.
- * 
- * @author Alexandre Annic
- *
  */
 @Entity
 @Table(name = "Locality")
@@ -50,6 +44,12 @@ public class Locality
 
 	@Range(min = 0, max = 5)
 	private Integer			note;
+
+	private String			price;
+
+	private Integer			latitude;
+
+	private Integer			longetude;
 
 
 	public Long getId()
@@ -147,4 +147,39 @@ public class Locality
 		this.note = note;
 	}
 
+
+	public String getPrice()
+	{
+		return price;
+	}
+
+
+	public void setPrice(String price)
+	{
+		this.price = price;
+	}
+
+
+	public Integer getLatitude()
+	{
+		return latitude;
+	}
+
+
+	public void setLatitude(Integer latitude)
+	{
+		this.latitude = latitude;
+	}
+
+
+	public Integer getLongetude()
+	{
+		return longetude;
+	}
+
+
+	public void setLongetude(Integer longetude)
+	{
+		this.longetude = longetude;
+	}
 }

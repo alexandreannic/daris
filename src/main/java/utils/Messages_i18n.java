@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 /**
  * Cette classe implémente une fonction utilitaire permettant de faciliter la
  * récupération d'un MessageSource
- * 
- * @author Alexandre Annic
- *
  */
 @Component
 public class Messages_i18n
