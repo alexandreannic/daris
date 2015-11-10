@@ -51,7 +51,6 @@
 			</div>
 		</div>
 	</c:forEach>
-	
 	<br/>
 </div>
 
@@ -79,7 +78,20 @@
 	</div>
 </div>
 
-
+<script>
+	$.ajax({
+		url: "http://maps.googleapis.com/maps/api/geocode/json",
+		dataType: "json",
+		data: {
+			sensor: false,
+			address: "4+Place+Jussieu+Paris"
+		},
+		success: function(data) {
+			console.log(JSON.stringify(data));
+			console.log(data.results[0].address_components[0].long_name);
+		}
+	});
+</script>
 <%@ include file='_script-message.jsp'%>
 <%@ include file='_script-findUsers.jsp'%>
 <%@ include file='../locality/view/_asyny-get_view.jsp'%>

@@ -44,7 +44,7 @@ $.widget('daris.validate', {
 			equalsTo: undefined
 		},
 		regex: {
-			enabled: true,
+			enabled: false,
 			message: 'Invalide',
 			regex: undefined
 		}
@@ -188,7 +188,7 @@ $.widget('daris.validate', {
 	_checkRegex: function()
 	{
 		var value = this.element.val();
-		
+		alert(value);
 		if(this.options.regex.regex.test(value))
 			this._removeError(this.element, this.tooltip, 'email');
 		else

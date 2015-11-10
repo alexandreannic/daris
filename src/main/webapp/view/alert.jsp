@@ -6,7 +6,7 @@
 <%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
  
 <div id='alert-container'>
-	<div id='alert-hold'></div>
+<!-- 	<div id='alert-hold'></div> -->
 </div>
 
 	
