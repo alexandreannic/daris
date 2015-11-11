@@ -70,7 +70,10 @@ public class Users
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
 			return "redirect:/";
 		}
-
+		
+		// Set inscription date 
+		user.setInscription(new Date(Calendar.getInstance().getTime().getTime()));
+		
 		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.signup"));
 		dao_user.create(user);
 

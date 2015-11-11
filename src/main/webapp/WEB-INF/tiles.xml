@@ -36,6 +36,11 @@
 		<put-attribute name="title" value="event.view.create.title" />
 		<put-attribute name="content" value="/view/event/view/view.jsp" />
 	</definition>
+	
+	<definition name="event/create" extends="base.definition">
+		<put-attribute name="title" value="event.view.create.title" />
+		<put-attribute name="content" value="/view/event/create/create.jsp" />
+	</definition>
 
 
 	<!-- User -->
@@ -49,6 +54,7 @@
 		<put-attribute name="title" value="user.view.view.pageTitle" />
 		<put-attribute name="content" value="/view/user/view/view.jsp" />
 	</definition>
+	
 
 	<!-- Locality -->
 	

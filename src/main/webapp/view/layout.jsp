@@ -23,7 +23,7 @@
 		<script src='<c:url value='/assets/script/highcharts/highcharts.js'/>'></script>
 		<script src='<c:url value='/assets/script/jquery-ui.autosize.min.js'/>'></script>
 	    <script>
-	        <%-- Définis des options par défaut pour les JQuery dialogs --%>
+	        <%-- Options par défaut pour les JQuery dialogs --%>
 	        $.extend($.ui.dialog.prototype.options, {
 	            autoOpen: false,
 	            modal: true,
@@ -32,6 +32,9 @@
 	            show: {effect: 'fade', duration: 200},
 	        });
 	        
+	        <%-- Options par défaut pour les JQuery datePicker --%>
+	        var defaultFormat = {dateFormat: 'yy-mm-dd'};
+	        $.datepicker.setDefaults(defaultFormat); 
 	        
        		<%-- Permet de changer de titre dynamiquement --%>
  	        function changeTitle(title) {
@@ -44,8 +47,9 @@
        			changeTitle('${pageTitle}');
 	        </c:if>
 	        
-	        <%-- Ajoute un bouton au wrapper --%>
-	        function addWrapperBtn(id, btnClass, tooltip, action) {
+	        <%-- Fonction d'ajoutant un bouton au wrapper --%>
+	        function addWrapperBtn(id, btnClass, tooltip, action)
+	        {
 	        	var elt = $('<i>')
 	        		.addClass('wrapper-btn')
 	        		.addClass('i-btn')
@@ -58,11 +62,11 @@
 	        	addWrapperElt(elt);
 	        }
 	        
-	        <%-- Ajoute un élément au wrapper --%>
-	        function addWrapperElt(elt) {
+	        <%-- Fonction ajoutant un élément au wrapper --%>
+	        function addWrapperElt(elt)
+	        {
 	        	$("#wrapper-actions").append(elt);
 	        }
-	        
 	    </script>
 	</head>
 	

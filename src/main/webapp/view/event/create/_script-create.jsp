@@ -1,6 +1,6 @@
 <script>
 	
-	<%-- Envoyer le formulairede l'évènement --%>
+	<%-- Envoyer le formulaire de l'évènement --%>
 	var event_form = $('#event-form');
 	var event_submit = $('#event-submit');
 
@@ -49,12 +49,6 @@
 	    
 	});
 	
-	
 	var addEvent_input_name = $(".addEvent-locality");
 	var addEvent_input_id = $(".addEvent-locality-id");
-	
-	
-	
-	
-	
 </script>

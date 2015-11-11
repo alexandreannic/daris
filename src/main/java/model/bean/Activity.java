@@ -36,13 +36,13 @@ public class Activity
 	/**
 	 * Date de début l'activité
 	 */
-	@NotBlank
+	// @NotBlank
 	private Date		from;
 
 	/**
 	 * Date de fin l'activité
 	 */
-	@NotBlank
+	// @NotBlank
 	private Date		to;
 
 	@ManyToOne(optional = false)
@@ -108,5 +108,4 @@ public class Activity
 	{
 		this.event = event;
 	}
-
 }

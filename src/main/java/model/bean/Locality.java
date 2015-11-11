@@ -182,4 +182,5 @@ public class Locality
 	{
 		this.longetude = longetude;
 	}
+
 }
