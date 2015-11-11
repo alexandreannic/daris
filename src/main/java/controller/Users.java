@@ -24,6 +24,7 @@ import model.bean.User;
 import model.bean.User_stats;
 import model.dao.DAO_User;
 import utils.Messages_i18n;
+import utils.Utils;
 
 
 /**
@@ -72,7 +73,7 @@ public class Users
 		}
 		
 		// Set inscription date 
-		user.setInscription(new Date(Calendar.getInstance().getTime().getTime()));
+		user.setInscription(Utils.SQLNow());
 		
 		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.signup"));
 		dao_user.create(user);

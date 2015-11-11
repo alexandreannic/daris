@@ -3,6 +3,7 @@ package model.bean;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -54,21 +55,40 @@ public class Event
 	 */
 	@JsonIgnore
 	@JoinTable(name = "event_participant")
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<User>		participants;
 
 	/**
 	 * Liste des activités prévues
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "event")
+	// @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	// @OneToMany(fetch = FetchType.EAGER)
-	private List<Activity>	activities	= new ArrayList<>();;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Activity>	activities;
 
 	/**
 	 * Cover photo of the event
 	 */
 	private String			picture;
+
+	/**
+	 * Max number of persons
+	 */
+	@Column(name = "max_user")
+	private int				max;
+
+
+	public int getParticipantsCount()
+	{
+		return participants.size();
+	}
+
+
+	public int getActivitiesCount()
+	{
+		return activities.size();
+	}
 
 
 	public Long getId()
@@ -152,5 +172,17 @@ public class Event
 	public void setPicture(String picture)
 	{
 		this.picture = picture;
+	}
+
+
+	public int getMax()
+	{
+		return max;
+	}
+
+
+	public void setMax(int max)
+	{
+		this.max = max;
 	}
 }

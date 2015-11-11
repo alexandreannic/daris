@@ -62,7 +62,7 @@
 	<ul id="sb-head">
 		
 		<li class="sb-li">
-			<a class="sb-ul-a" href="<c:url value="event/index"/>">
+			<a class="sb-ul-a" href="<c:url value="/event/index"/>">
 				<i class="fa-calendar-o sb-icon"></i>
 				<spring:message code="menu.event"/>
 			</a>

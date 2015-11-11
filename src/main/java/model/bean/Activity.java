@@ -1,16 +1,14 @@
 package model.bean;
 
 import java.sql.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 /**
@@ -37,17 +35,19 @@ public class Activity
 	 * Date de début l'activité
 	 */
 	// @NotBlank
+	@Column(name = "date_from")
 	private Date		from;
 
 	/**
 	 * Date de fin l'activité
 	 */
 	// @NotBlank
+	@Column(name = "date_to")
 	private Date		to;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "event_id")
-	private Event		event;
+//	@ManyToOne(optional = false)
+//	@JoinColumn(name = "event_id")
+//	private Event		event;
 
 
 	public Long getId()
@@ -98,14 +98,14 @@ public class Activity
 	}
 
 
-	public Event getEvent()
-	{
-		return event;
-	}
-
-
-	public void setEvent(Event event)
-	{
-		this.event = event;
-	}
+//	public Event getEvent()
+//	{
+//		return event;
+//	}
+//
+//
+//	public void setEvent(Event event)
+//	{
+//		this.event = event;
+//	}
 }

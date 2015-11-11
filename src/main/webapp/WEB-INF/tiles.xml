@@ -32,8 +32,13 @@
 	
 	<!-- Event -->
 	
+	<definition name="event/index" extends="base.definition">
+		<put-attribute name="title" value="event.view.index.title" />
+		<put-attribute name="content" value="/view/event/index/index.jsp" />
+	</definition>
+	
 	<definition name="event/view" extends="base.definition">
-		<put-attribute name="title" value="event.view.create.title" />
+		<put-attribute name="title" value="" />
 		<put-attribute name="content" value="/view/event/view/view.jsp" />
 	</definition>
 	

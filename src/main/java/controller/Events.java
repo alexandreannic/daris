@@ -20,9 +20,11 @@ import model.bean.Activity;
 import model.bean.Event;
 import model.bean.Locality;
 import model.bean.User;
+import model.dao.DAO_Activity;
 import model.dao.DAO_Event;
 import model.dao.DAO_Locality;
 import utils.Messages_i18n;
+import utils.Utils;
 
 
 /**
@@ -39,9 +41,29 @@ public class Events
 	DAO_Locality			dao_locality;
 	
 	@Autowired
+	DAO_Activity			dao_activity;
+	
+	@Autowired
 	private Messages_i18n	messages;
 
 
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(ModelMap pModel, HttpSession session, RedirectAttributes flash)
+	{
+		// Vérifie que l'utilisateur est connecté
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.pleaseConnect"));
+			return "redirect:/";
+		}
+		
+		List<Event> events = dao_event.findAll();
+		pModel.addAttribute("events", events);
+		
+		return "event/index";
+	}
+	
+	
 	/**
 	 * Affiche un évènement particulier
 	 */
@@ -106,11 +128,17 @@ public class Events
 
 		Activity act = new Activity();
 		act.setLocality(dao_locality.find((long)1));
+		act.setFrom(Utils.SQLNow());
+		act.setTo(Utils.SQLNow());
 		List<Activity> acts = new ArrayList<>();
 		acts.add(act);
+//		act.setEvent(event);
+		System.out.println("FROM " + act.getFrom());
+		System.out.println("To " + act.getTo());
 		event.setActivities(acts);
-		System.out.println(event.toString());
-//		for (Activity a : event.getActivities()) {
+		for (Activity a : event.getActivities()) {
+			dao_activity.create(a);
+		}
 //			Locality loc = new Locality();
 //			a.setLocality(dao_locality.find(1));
 ////			System.out.println("- loc id " + a.getLocality().getId());
@@ -120,9 +148,8 @@ public class Events
 //			// System.out.println(a.getLocality().getName());
 //		}
 		if (result.hasErrors()) {
-			System.out.println("count : " + result.getErrorCount());
-			for(ObjectError o :result.getAllErrors()) 
-				System.out.println("===>" + o.toString());
+//			for(ObjectError o :result.getAllErrors()) 
+//				System.out.println("===>" + o.toString());
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
 			return "redirect:/dashboard";
 		}
@@ -141,7 +168,7 @@ public class Events
 //			System.out.println(ac.getLocality().getId());
 //			System.out.println(ac.getLocality().getName());
 //		}
-		return "viewEvent";
+		return "event/view";
 	}
 
 
