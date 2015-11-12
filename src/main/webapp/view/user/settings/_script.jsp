@@ -25,7 +25,7 @@ settings_input_firstName.validate({
 });
 
 settings_input_lastName.validate({
-	required: true,
+	required: false,
 	length: {
 		enabled: true,
 		minLength: 3,
@@ -34,7 +34,7 @@ settings_input_lastName.validate({
 });
 
 settings_input_address.validate({
-	required: true,
+	required: false,
 	length: {
 		enabled: true,
 		minLength: 3,
@@ -43,7 +43,7 @@ settings_input_address.validate({
 });	
 
 settings_input_city.validate({
-	required: true,
+	required: false,
 	length: {
 		enabled: true,
 		minLength: 3,

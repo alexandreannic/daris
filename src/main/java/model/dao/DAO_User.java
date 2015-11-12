@@ -21,7 +21,22 @@ public class DAO_User extends DAO<User, Long>
 		return em.createQuery("SELECT u FROM User u").getResultList();
 	}
 
-
+	/*
+	 * Recherche user à partir un id
+	 */
+	public User findById(Long id){
+		List results = em.createQuery(
+				"SELECT u "
+				+ "FROM User u "
+				+ "WHERE u.id = '" + id + "'"
+		)
+		.getResultList();
+		
+		if(results.isEmpty()) return null;
+		else return (User) results.get(0);
+	}
+	
+	
 	public User findByEmail(String email)
 	{
 		List results = em.createQuery(
