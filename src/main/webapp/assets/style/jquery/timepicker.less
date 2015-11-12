@@ -1,0 +1,31 @@
+.ui-timepicker.ui-widget {
+    background: white;
+    .box-shadow(1px 1px 1px 0px #9b9b9b);
+    overflow: hidden;
+}
+.ui-timepicker-title {
+    background: lighten(@color-main, 10);
+    color: white;
+    padding: 4px;
+    font-weight: bold;
+    border: 1px solid lighten(@color-main, 10);
+}
+
+.ui-timepicker-hour-cell,
+.ui-timepicker-minute-cell {
+    text-align: right;
+    padding: 4px 7px;
+    border: 1px solid @color-div-light;
+
+    &:hover {
+        color: black;
+        background: lighten(@color-div-light, 5);
+    }
+}
+.ui-timepicker-unselectable {
+    color: @color-font-em;
+}
+// Supprime AM/PM
+.ui-timepicker .periods {
+    display: none;
+}

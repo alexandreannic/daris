@@ -37,7 +37,8 @@
 			</a>
 			Nombre d'étapes : <strong>${event.activitiesCount}</strong>
 			<br/>
-			Participants : <strong>${event.participantsCount} / ${event.max}</strong>
+			Nombre de participants : <strong>${event.participantsCount}</strong>
+<%-- 			 / ${event.max}</strong> --%>
 		</div>
 	</div>
 </c:forEach>

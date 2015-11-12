@@ -47,9 +47,9 @@ public class Locality
 
 	private String			price;
 
-	private Integer			latitude;
+	private float			latitude;
 
-	private Integer			longetude;
+	private float			longetude;
 
 
 	public Long getId()
@@ -160,25 +160,25 @@ public class Locality
 	}
 
 
-	public Integer getLatitude()
+	public float getLatitude()
 	{
 		return latitude;
 	}
 
 
-	public void setLatitude(Integer latitude)
+	public void setLatitude(float latitude)
 	{
 		this.latitude = latitude;
 	}
 
 
-	public Integer getLongetude()
+	public float getLongetude()
 	{
 		return longetude;
 	}
 
 
-	public void setLongetude(Integer longetude)
+	public void setLongetude(float longetude)
 	{
 		this.longetude = longetude;
 	}

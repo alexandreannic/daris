@@ -1,6 +1,6 @@
 package model.bean;
 
-import java.sql.Date;
+import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,18 +36,18 @@ public class Activity
 	 */
 	// @NotBlank
 	@Column(name = "date_from")
-	private Date		from;
+	private String		from;
 
 	/**
 	 * Date de fin l'activité
 	 */
 	// @NotBlank
 	@Column(name = "date_to")
-	private Date		to;
+	private String		to;
 
-//	@ManyToOne(optional = false)
-//	@JoinColumn(name = "event_id")
-//	private Event		event;
+	// @ManyToOne(optional = false)
+	// @JoinColumn(name = "event_id")
+	// private Event event;
 
 
 	public Long getId()
@@ -74,38 +74,37 @@ public class Activity
 	}
 
 
-	public Date getFrom()
+	public String getFrom()
 	{
 		return from;
 	}
 
 
-	public void setFrom(Date from)
+	public void setFrom(String from)
 	{
 		this.from = from;
 	}
 
 
-	public Date getTo()
+	public String getTo()
 	{
 		return to;
 	}
 
 
-	public void setTo(Date to)
+	public void setTo(String to)
 	{
 		this.to = to;
 	}
 
-
-//	public Event getEvent()
-//	{
-//		return event;
-//	}
-//
-//
-//	public void setEvent(Event event)
-//	{
-//		this.event = event;
-//	}
+	// public Event getEvent()
+	// {
+	// return event;
+	// }
+	//
+	//
+	// public void setEvent(Event event)
+	// {
+	// this.event = event;
+	// }
 }

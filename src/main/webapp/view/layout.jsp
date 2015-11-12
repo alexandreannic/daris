@@ -32,12 +32,31 @@
 	            show: {effect: 'fade', duration: 200},
 	        });
 	        
-	        <%-- Options par défaut pour les JQuery datePicker --%>
+	        <%-- Options par défaut pour les JQuery datepicker --%>
 	        var defaultFormat = {dateFormat: 'yy-mm-dd'};
 	        $.datepicker.setDefaults(defaultFormat); 
 	        
+	        <%-- Init timepicker en Francais --%>
+	        $.timepicker.regional['fr'] = {
+	                timeOnlyTitle: 'Choisir une heure',
+	                timeText: 'Heure',
+	                hourText: 'Heures',
+	                minuteText: 'Minutes',
+	                secondText: 'Secondes',
+	                millisecText: 'Millisecondes',
+	                timezoneText: 'Fuseau horaire',
+	                currentText: 'Maintenant',
+	                closeText: 'Terminé',
+	                timeFormat: 'hh:mm',
+	                amNames: ['AM', 'A'],
+	                pmNames: ['PM', 'P'],
+	                ampm: false
+	        };
+	        $.timepicker.setDefaults($.timepicker.regional['fr']);
+	        
        		<%-- Permet de changer de titre dynamiquement --%>
- 	        function changeTitle(title) {
+ 	        function changeTitle(title)
+ 	        {
  	        	$('title').text(title);
  	        	$('#wrapper-title').text(title);
  	        }

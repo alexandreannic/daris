@@ -188,7 +188,6 @@ $.widget('daris.validate', {
 	_checkRegex: function()
 	{
 		var value = this.element.val();
-		alert(value);
 		if(this.options.regex.regex.test(value))
 			this._removeError(this.element, this.tooltip, 'email');
 		else

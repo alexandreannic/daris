@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import model.bean.Activity;
 import model.bean.Event;
-import model.bean.Locality;
 import model.bean.User;
 import model.dao.DAO_Activity;
 import model.dao.DAO_Event;
 import model.dao.DAO_Locality;
+import model.dao.DAO_User;
 import utils.Messages_i18n;
-import utils.Utils;
 
 
 /**
@@ -42,6 +41,9 @@ public class Events
 	
 	@Autowired
 	DAO_Activity			dao_activity;
+	
+	@Autowired
+	DAO_User				dao_user;
 	
 	@Autowired
 	private Messages_i18n	messages;
@@ -87,7 +89,7 @@ public class Events
 
 		pModel.addAttribute("event", event);
 		pModel.addAttribute("activities", event.getActivities());
-		pModel.addAttribute("participantList", event.getParticipants());
+		pModel.addAttribute("participants", event.getParticipants());
 
 		return "event/view";
 	}
@@ -122,53 +124,27 @@ public class Events
 	public String addEvent(@Valid Event event, BindingResult result, RedirectAttributes flash, ModelMap pModel,
 			HttpSession session)
 	{
-		System.out.println("__________________________________");
-//		System.out.println(event.getName());
-//		System.out.println(event.getDescription());
-
-		Activity act = new Activity();
-		act.setLocality(dao_locality.find((long)1));
-		act.setFrom(Utils.SQLNow());
-		act.setTo(Utils.SQLNow());
-		List<Activity> acts = new ArrayList<>();
-		acts.add(act);
-//		act.setEvent(event);
-		System.out.println("FROM " + act.getFrom());
-		System.out.println("To " + act.getTo());
-		event.setActivities(acts);
-		for (Activity a : event.getActivities()) {
-			dao_activity.create(a);
-		}
-//			Locality loc = new Locality();
-//			a.setLocality(dao_locality.find(1));
-////			System.out.println("- loc id " + a.getLocality().getId());
-////			System.out.println("- loc name " + a.getLocality().getName());
-////			System.out.println("- from: " + a.getFrom());
-////			System.out.println("- to " + a.getTo());
-//			// System.out.println(a.getLocality().getName());
-//		}
 		if (result.hasErrors()) {
-//			for(ObjectError o :result.getAllErrors()) 
-//				System.out.println("===>" + o.toString());
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
 			return "redirect:/dashboard";
 		}
+		
+		// Store les activités avant de store l'événement 
+		for (Activity a : event.getActivities()) {
+			dao_activity.create(a);
+		}
+		
+		// Link les participants
+		for(User u : event.getParticipants()) {
+			u = dao_user.find(u.getId());
+			dao_user.update(u);
+		}
 
 		// ajouter l'évènement
-		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.signup"));
-		dao_event.create(event);
-
-		// préparer l'affichage de l'évènement créé
-		pModel.addAttribute("event", event);
-		pModel.addAttribute("activites", event.getActivities());
-		pModel.addAttribute("participants", event.getParticipants());
+		event = dao_event.create(event);
+		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("event.controller.create.success"));
 		
-//		Event event2 = dao_event.find((long) 1);
-//		for(Activity ac : event2.getActivities()){
-//			System.out.println(ac.getLocality().getId());
-//			System.out.println(ac.getLocality().getName());
-//		}
-		return "event/view";
+		return "redirect:/event/view/" + event.getId();
 	}
 
 

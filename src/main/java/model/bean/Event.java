@@ -1,5 +1,6 @@
 package model.bean;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -40,8 +42,13 @@ public class Event
 	/**
 	 * Description de l'évènement
 	 */
-	@NotBlank
 	private String			description;
+
+	/**
+	 * Date de l'événement. Il ne peut pas durer plus d'une journée.
+	 */
+	@NotNull
+	private Date			day;
 
 	/**
 	 * Créateur de l'évènement
@@ -56,7 +63,8 @@ public class Event
 	@JsonIgnore
 	@JoinTable(name = "event_participant")
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<User>		participants;
+//	@ManyToMany
+	private List<User>		participants = new ArrayList<>();
 
 	/**
 	 * Liste des activités prévues
@@ -65,7 +73,7 @@ public class Event
 	// @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	// @OneToMany(fetch = FetchType.EAGER)
 	@OneToMany(fetch = FetchType.EAGER)
-	private List<Activity>	activities;
+	private List<Activity>	activities = new ArrayList<>();;
 
 	/**
 	 * Cover photo of the event
@@ -184,5 +192,17 @@ public class Event
 	public void setMax(int max)
 	{
 		this.max = max;
+	}
+
+
+	public Date getDay()
+	{
+		return day;
+	}
+
+
+	public void setDay(Date day)
+	{
+		this.day = day;
 	}
 }

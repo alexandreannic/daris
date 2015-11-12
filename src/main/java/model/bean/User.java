@@ -2,6 +2,7 @@ package model.bean;
 
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -76,9 +77,11 @@ public class User
 	/**
 	 * List des évenements auxquels participe l'utilisateur
 	 */
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "participants")
-	private List<Event>		events;
+//	@JsonIgnore
+//	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "participants")
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE}, mappedBy = "participants")
+//	@ManyToMany(mappedBy="participants")
+//	private List<Event>		events;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "from")
@@ -255,16 +258,16 @@ public class User
 	{
 		this.inscription = inscription;
 	}
-
-
-	public List<Event> getEvents()
-	{
-		return events;
-	}
-
-
-	public void setEvents(List<Event> events)
-	{
-		this.events = events;
-	}
+//
+//
+//	public List<Event> getEvents()
+//	{
+//		return events;
+//	}
+//
+//
+//	public void setEvents(List<Event> events)
+//	{
+//		this.events = events;
+//	}
 }

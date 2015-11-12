@@ -1,0 +1,62 @@
+#map {
+	height: 400px;
+}
+.panel-title > .input-with-icon {
+	width: 100%;
+}
+
+
+// Activités ajoutées
+.add-act-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid @color-div-light;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    
+    .fa-times {
+    	font-size: 20px;
+    	color: @color-red;
+    	width: 40px;
+    }
+}
+	.add-act-row-img {
+		flex: inherit;
+		
+		> img {
+		    height: 70px;
+		}
+	}
+	
+	.add-act-row-name {
+		margin: 10px;
+		font-size: 17px;
+		color: @color-main;
+		flex: 1;
+	}
+	
+	.add-act-row-dates {
+		display: flex;
+		flex-direction: column;
+	}
+		.add-act-row-from {
+			margin-bottom: 4px;
+			> div {
+			    display: inline-block;
+				width: 64px;
+			}
+		}
+		.add-act-row-to {
+			> div {
+			    display: inline-block;
+				width: 64px;
+			}
+		}
+		
+
+// Users ajoutés
+.user-remove {
+	font-size: 20px;
+	color: @color-red;
+	width: 30px;
+}
