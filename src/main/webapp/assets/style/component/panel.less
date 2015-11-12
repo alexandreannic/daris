@@ -20,6 +20,17 @@
         border-right: 1px solid #e6e6e6;
         padding-right: 6px;
     }
+    
+    // Scrollbar
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: @color-div;
+    }
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: @color-div;
+    }
 }
 .panel-position {
     padding: @panel-padding;

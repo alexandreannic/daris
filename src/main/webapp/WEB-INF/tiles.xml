@@ -44,9 +44,13 @@
 	
 	<definition name="event/create" extends="base.definition">
 		<put-attribute name="title" value="event.view.create.title" />
-		<put-attribute name="content" value="/view/event/create/create.jsp" />
+		<put-attribute name="content" value="/view/event/edit/edit.jsp" />
 	</definition>
 
+	<definition name="event/edit" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="content" value="/view/event/edit/edit.jsp" />
+	</definition>
 
 	<!-- User -->
 	

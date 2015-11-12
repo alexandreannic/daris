@@ -56,6 +56,9 @@
 
 <div class='col-xs-12 col-md-5'>
 	<div class='panel'>
+		<h1 class='panel-title'>
+			Abonnements
+		</h1>
 		<c:forEach items="${sessionScope.user.followed}" var="follow">
 			<div onclick='document.location="/daris/user/view/${follow.id}"' class='followed col-xs-6 col-sm-4 col-md-12 col-lg-6'>
 				<div class="follow-photo">

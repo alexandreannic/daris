@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 
 /**
- * La classe Event représente un évènement créé par un utilisateur et pouvant
+ * La classe Event représente un événement créé par un utilisateur et pouvant
  * comprendre plusieurs participants
  */
 @Entity
@@ -34,13 +34,13 @@ public class Event
 	private Long			id;
 
 	/**
-	 * Nom de l'évènement
+	 * Nom de l'événement
 	 */
 	@NotBlank
 	private String			name;
 
 	/**
-	 * Description de l'évènement
+	 * Description de l'événement
 	 */
 	private String			description;
 
@@ -51,7 +51,7 @@ public class Event
 	private Date			day;
 
 	/**
-	 * Créateur de l'évènement
+	 * Créateur de l'événement
 	 */
 	@OneToOne
 	@JoinColumn(name = "user_id")
@@ -61,19 +61,21 @@ public class Event
 	 * Liste des participants
 	 */
 	@JsonIgnore
-	@JoinTable(name = "event_participant")
+	@JoinTable(name = "event_participant",
+		joinColumns = @JoinColumn(name = "event_id", referencedColumnName="id"),
+		inverseJoinColumns = @JoinColumn(name = "participants_id", referencedColumnName="id"))
 	@ManyToMany(fetch = FetchType.EAGER)
-//	@ManyToMany
 	private List<User>		participants = new ArrayList<>();
 
 	/**
 	 * Liste des activités prévues
 	 */
-	@JsonIgnore
+//	@JsonIgnore
 	// @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	// @OneToMany(fetch = FetchType.EAGER)
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Activity>	activities = new ArrayList<>();;
+    @OneToMany(fetch = FetchType.EAGER)
+//	@OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+	private List<Activity>	activities = new ArrayList<>();
 
 	/**
 	 * Cover photo of the event

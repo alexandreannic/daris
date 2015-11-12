@@ -77,13 +77,6 @@
 		</li>
 		
 		<li class="sb-li">
-			<a class="sb-ul-a"href="<c:url value="/event/view/1"/>">
-				<i class="fa-envelope sb-icon"></i>
-				<spring:message code="menu.message"/>
-			</a>
-		</li>
-		
-		<li class="sb-li">
 			<a class="sb-ul-a" href="<c:url value="/event/create"/>">
 				<i class="fa-plus sb-icon"></i>
 				<spring:message code="menu.addEvent"/>

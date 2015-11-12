@@ -110,7 +110,7 @@ public class Pages
 	}
 	
 	/**
-	 * So l'utilisateur clique sur le bouton de création d'un évènement,
+	 * So l'utilisateur clique sur le bouton de création d'un événement,
 	 * il est dirigé vers la page du formulaire de création
 	 * 
 	 * @param pModel
@@ -125,7 +125,7 @@ public class Pages
 		if (user == null) { return "redirect:/"; }
 
 		// Envoi un bean vide à la vue pour générer un formulaire
-		// permettant de créer un évènement
+		// permettant de créer un événement
 		pModel.addAttribute("event", new Event());
 		pModel.addAttribute("activity", new Activity());
 

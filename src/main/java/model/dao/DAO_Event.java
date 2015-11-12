@@ -12,7 +12,7 @@ import model.bean.User;
 
 /**
  * Cette classe implémente les fonctions permettant d'accèder aux données
- * peristantes concernant un évènement.
+ * peristantes concernant un événement.
  */
 @Repository
 public class DAO_Event extends DAO<Event, Long>
@@ -33,9 +33,31 @@ public class DAO_Event extends DAO<Event, Long>
 			+ 	"WHERE e.id = '" + id + "'"
 		)
 		.getSingleResult();
-		
 	}
 	
+	public List<Event> findCreatedBy(Long id)
+	{
+		List results = em.createQuery(
+				"SELECT e "
+			+	"FROM Event e "
+			+	"WHERE e.creator.id = " + id
+		).getResultList();
+		
+		return results;
+	}
+	
+	public List<Event> findParticipedBy(User user)
+	{
+		List results = em.createQuery(
+				"SELECT e "
+			+	"FROM Event e "
+			+	"WHERE :user in elements(e.participants)"
+		)
+		.setParameter("user", user)
+		.getResultList();
+		
+		return results;
+	}
 	
 	public List<Event> findByLocality(Locality loc)
 	{
@@ -98,6 +120,6 @@ public class DAO_Event extends DAO<Event, Long>
 	public void remove(Integer eventID){
 		// supprimer d'abord les activités liés
 		
-		// supprmier l'évènement en question
+		// supprmier l'événement en question
 	}
 }

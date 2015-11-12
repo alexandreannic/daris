@@ -13,7 +13,7 @@
 		
 		<a id="sb-user" class="sb-ul-a">
 			<div id="sb-photo">
-				<i id="sb-photo-default"></i>
+				<i id="sb-admin-default"></i>
 			</div>
 			<span id="sb-user-name">
 				<spring:message code="admin.view.name"/>

@@ -1,5 +1,82 @@
-@author-photo-size: 34px;
+@author-photo-size: 33px;
 
+.event-row-ct {
+	height: 400px;
+	overflow-y: scroll;
+	padding-right: 3px;
+}
+
+
+// Events créés
+.event-row {
+	display: flex;
+	align-items: center;
+	.transition(all, .2s);
+	border: 1px solid white;
+	padding: 3px;
+	cursor: pointer;
+	
+    &:hover {
+		background: lighten(@color-main, 58);
+		border: 1px solid lighten(@color-main, 40);
+		.transition(all, .2s);
+	}
+}
+	.event-row-img-ct {
+		flex: inherit;
+	    height: 64px;
+	}
+		.event-row-img {
+			height: 64px;
+		}
+		
+	.event-row-field {
+		margin: 0 10px;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+		.event-row-name {
+			font-size: 16px;
+			color: @color-main;
+			margin-bottom: 5px;
+		}
+		
+		.event-row-creator {
+			flex: 1;
+			display: flex;
+			align-items: center;
+		}
+			.event-row-creater-photo {
+				.border-radius(50%);
+				overflow: hidden;
+				width: @author-photo-size - 2;
+				height: @author-photo-size - 2;
+				margin-right: 6px;
+			}
+	
+	.event-row-info {
+		width: 84px;
+		
+		 strong {
+			float: right;
+		}
+	}
+	
+#fix-space {
+    line-height: 5;
+}
+
+
+// All events
+
+#events-header {
+	margin: @panel-padding;	
+}
+	#events-count {
+		float: right;	
+	}
+	
 .event-box-img-ct {
 	overflow: hidden;
 }

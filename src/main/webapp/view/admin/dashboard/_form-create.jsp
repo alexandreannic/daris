@@ -40,13 +40,13 @@
 	
 	<div class='form-field'>
 		<label for='addLocality-description'><spring:message code='locality.field.description' /></label>
-		<form:input id='addLocality-description' path='description'/>
+		<form:textarea id='addLocality-description' path='description'/>
 	</div>
 	
-	<div class='form-field'>
-		<label for='addLocality-note'><spring:message code='locality.field.note' /></label>
-		<form:textarea id='addLocality-note' path='note'/>
-	</div>
+<!-- 	<div class='form-field'> -->
+<%-- 		<label for='addLocality-note'><spring:message code='locality.field.note' /></label> --%>
+<%-- 		<form:input type='number' min='0' max='5' id='addLocality-note' path='note'/> --%>
+<!-- 	</div> -->
 	
 	<div class='form-field'>
 		<label for='addLocality-price'><spring:message code='locality.field.price' /></label>

@@ -43,7 +43,7 @@ public class Locality
 	private String			description;
 
 	@Range(min = 0, max = 5)
-	private Integer			note;
+	private Integer			note = 0;
 
 	private String			price;
 

@@ -1,5 +1,5 @@
 <%--
-	Cette page permet d'afficher un évènement particulier.
+	Cette page permet d'afficher un événement particulier.
 --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored='false' pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
@@ -7,7 +7,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<%-- bloack de la fiche détaillée de l'évènement --%>
+<%-- bloack de la fiche détaillée de l'événement --%>
 <div class="col-xs-12 col-md-8">
 	<div class="panel">
 	
@@ -15,7 +15,7 @@
 			<c:out value="${event.name}" />
 		</h1>
 		
-		<%-- bouton de participation à l'évènement --%>
+		<%-- bouton de participation à l'événement --%>
 		<a href="<c:url value="event/attend"/>"><spring:message code='event.view.participate' /></a>
 		<br />
 		

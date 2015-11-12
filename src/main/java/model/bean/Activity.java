@@ -1,18 +1,19 @@
 package model.bean;
 
-import java.sql.Time;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 /**
- * La classe Activity représente une activité planfiée pour un évènement dans
+ * La classe Activity représente une activité planfiée pour un événement dans
  * une Locality particulière
  */
 @Entity
@@ -23,6 +24,10 @@ public class Activity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long		id;
+//
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "event_id")
+//	private Event		event;
 
 	/**
 	 * Lieux d'interêt à visiter
@@ -97,14 +102,15 @@ public class Activity
 		this.to = to;
 	}
 
-	// public Event getEvent()
-	// {
-	// return event;
-	// }
-	//
-	//
-	// public void setEvent(Event event)
-	// {
-	// this.event = event;
-	// }
+
+//	public Event getEvent()
+//	{
+//		return event;
+//	}
+//
+//
+//	public void setEvent(Event event)
+//	{
+//		this.event = event;
+//	}
 }

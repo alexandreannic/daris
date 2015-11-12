@@ -1,5 +1,5 @@
 <%--
-	Cette page permet la création d'un nouvel évènement
+	Cette page permet la création d'un nouvel événement
 --%>
 
 <%@ page language='java' contentType='text/html; charset=ISO-8859-1' isELIgnored='false' pageEncoding='ISO-8859-1'%>
@@ -7,20 +7,14 @@
 <%@taglib uri='http://www.springframework.org/tags' prefix='spring'%>
 <%@taglib uri='http://www.springframework.org/tags/form' prefix='form'%>
 
-<%-- Block de création d'un nouvel évènement --%>
 
 <form:form id='event-form' method='POST' action='/daris/event/add' commandName='event'>
-	
-<!-- 	<input type="hidden" name="participants[0].id" value="4"/> -->
-<!-- 	<input type="hidden" name="activities[0].from" value="4"/> -->
-<!-- 	<input type="hidden" name="activities[0].to" value="4"/> -->
-<!-- 	<input type="hidden" name="activities[0].locality.id" value="1"/> -->
 	
 	<div class='col-xs-12 col-md-6'>
 	
 		<div  class='panel'>
 			<h1 class='panel-title'>
-				Création d'un nouvel évènement
+				Création d'un nouvel événement
 			</h1>
 			
 			
@@ -28,12 +22,12 @@
 				
 				<div class='form-field'>
 					<label for='addEvent-name'><spring:message code='event.field.name'/></label>
-					<form:input id='addEvent-name' path='name' value='geageagea'/>
+					<form:input id='addEvent-name' path='name'/>
 				</div>
 				
 				<div class='form-field'>
 					<label for='addEvent-day'><spring:message code='view.date'/></label>
-					<form:input id='addEvent-day' path='day' value='2015-11-03'/>
+					<form:input id='addEvent-day' path='day'/>
 				</div>
 				
 <!-- 				<div class='form-field'> -->
@@ -72,7 +66,6 @@
 				<input id='event-act-input' class='input-with-icon' placeholder="Rechercher un point d'intérêt"/><i class='fa-search input-icon'></i>
 			</h1>
 			<div id='event-acts'>
-				<em id='event-acts-noone'>Aucune activité ajoutée</em>
 			</div>
 		</div>
 		
@@ -82,7 +75,18 @@
 				<input id='event-user-input' class='input-with-icon' placeholder="Rechercher une personne"/><i class='fa-search input-icon'></i>
 			</h1>
 			<div id='event-users'>
-				<em id='event-user-none'>Aucun membre ajoutée</em>
+				<c:choose>
+					<c:when test='${event_edited == null && event_edited.participantsCount > 0}'>
+						<em id='event-user-none'>Aucun membre ajoutée</em>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items='${event_edited.participants}' var='participant'>
+							<div>
+								${participant.fullName}
+							</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		

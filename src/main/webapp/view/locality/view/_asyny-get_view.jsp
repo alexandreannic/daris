@@ -10,7 +10,7 @@
 <%@ taglib uri='http://www.springframework.org/tags/form' prefix='form'%>
 
 
-<div id='locality-popup' style='display: none'></div>
+<div id='locality-popup' style='display: none;height:260px;'></div>
 
 <script>
 

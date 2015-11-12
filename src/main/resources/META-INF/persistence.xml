@@ -5,10 +5,5 @@
 
 	<persistence-unit name="unit">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-		<properties>
-			<property name="eclipselink.logging.level" value="FINEST" />
-		</properties>
-		
 	</persistence-unit>
 </persistence>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,8 +55,12 @@ public class Localities
 	{
 		// vérifier d'il ya des erreurs
 		if (result.hasErrors()) {
+			
+			for(ObjectError er : result.getAllErrors()) {
+				System.out.println(er);
+			}
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
-			return "createLocality";
+			return "redirect:/admin/dashboard";
 		}
 
 		// ajouter la localité
@@ -97,7 +102,7 @@ public class Localities
 	{
 		// Ce serait dommage de ne pas voir le joli logo de chargement !
 		try {
-			Thread.sleep(500);
+			Thread.sleep(400);
 		}
 		catch (InterruptedException e) {
 			e.printStackTrace();
