@@ -149,7 +149,7 @@
 	    overflow: hidden;
 	    border: 2px solid @color-border-section;
 	    margin-right: 7px;
-     	background: silver;
+     	background: darken(@color-main, 10);
 	}
 		#sb-photo-img {
 			height: @photo-size;
@@ -159,12 +159,13 @@
 	        margin-top: 8px;
 	        text-align: center;
 	        vertical-align: middle;
-	        color: grey;
+	        color: @color-border-section;
 	        font-size: 30px;
 	        padding-top: 10px;
-	        width: 100%;
-	        height: 100%;
-	
+	        height: @photo-size;
+			width: @photo-size;
+			.border-radius(50%);
+			
 	        &:before{
 	            content:"\f007"
 	        }

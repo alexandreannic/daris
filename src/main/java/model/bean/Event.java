@@ -1,8 +1,10 @@
 package model.bean;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -39,8 +42,13 @@ public class Event
 	/**
 	 * Description de l'évènement
 	 */
-	@NotBlank
 	private String			description;
+
+	/**
+	 * Date de l'événement. Il ne peut pas durer plus d'une journée.
+	 */
+	@NotNull
+	private Date			day;
 
 	/**
 	 * Créateur de l'évènement
@@ -54,21 +62,41 @@ public class Event
 	 */
 	@JsonIgnore
 	@JoinTable(name = "event_participant")
-	@ManyToMany
-	private List<User>		participants;
+	@ManyToMany(fetch = FetchType.EAGER)
+//	@ManyToMany
+	private List<User>		participants = new ArrayList<>();
 
 	/**
 	 * Liste des activités prévues
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "event")
+	// @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	// @OneToMany(fetch = FetchType.EAGER)
-	private List<Activity>	activities	= new ArrayList<>();;
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Activity>	activities = new ArrayList<>();;
 
 	/**
 	 * Cover photo of the event
 	 */
 	private String			picture;
+
+	/**
+	 * Max number of persons
+	 */
+	@Column(name = "max_user")
+	private int				max;
+
+
+	public int getParticipantsCount()
+	{
+		return participants.size();
+	}
+
+
+	public int getActivitiesCount()
+	{
+		return activities.size();
+	}
 
 
 	public Long getId()
@@ -152,5 +180,29 @@ public class Event
 	public void setPicture(String picture)
 	{
 		this.picture = picture;
+	}
+
+
+	public int getMax()
+	{
+		return max;
+	}
+
+
+	public void setMax(int max)
+	{
+		this.max = max;
+	}
+
+
+	public Date getDay()
+	{
+		return day;
+	}
+
+
+	public void setDay(Date day)
+	{
+		this.day = day;
 	}
 }

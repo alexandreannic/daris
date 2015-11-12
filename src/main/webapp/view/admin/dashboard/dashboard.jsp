@@ -16,8 +16,6 @@
 			</span>
 		</h1>
 		
-		<a href='<c:url value='/createLocality'/>'><spring:message code='admin.dashboard.locality.create' /></a>
-		
 		<div id='stats'>
 		</div>
 	</div>

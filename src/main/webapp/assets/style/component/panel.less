@@ -5,7 +5,13 @@
     margin-bottom: 15px;
     position: relative;
     overflow: hidden;
+    .transition(all, .5s, linear);
 
+	&.focus {
+		.transition(all, .1s, linear);
+	    box-shadow: 0 0 5px 2px #69c6f9;
+	    transform: scale(1.02);
+	}
     .pages-controller {
         position: absolute;
         top: 9px;

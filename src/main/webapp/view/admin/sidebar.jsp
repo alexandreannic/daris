@@ -12,8 +12,9 @@
 	<div id="sb-head">
 		
 		<a id="sb-user" class="sb-ul-a">
-			<i id="sb-photo-default"></i>
-
+			<div id="sb-photo">
+				<i id="sb-photo-default"></i>
+			</div>
 			<span id="sb-user-name">
 				<spring:message code="admin.view.name"/>
 			</span>

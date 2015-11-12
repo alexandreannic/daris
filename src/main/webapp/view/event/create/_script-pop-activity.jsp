@@ -2,7 +2,7 @@
 
 var activity_add_btn = $("#activiy-add-btn");
 var activity_container = $("#activity-container");
-var index = 0;
+var index = 1;
 
 activity_add_btn.click(function() {
 	var async_index = index;
@@ -11,7 +11,7 @@ activity_add_btn.click(function() {
 		"<div class='form-field'>" +
 			"<label for='addActivity-locality'><spring:message code='event.activity.field.locality'/></label>" +
 			"<input id='addEvent-locality" + index + "'/>" +
-			"<input type='hidden' id='addEvent-locality-id" + index + "' name='activities[" + index + "].locality'/>" +
+			"<input type='hidden' id='addEvent-locality-id" + index + "' name='activities[" + index + "].locality.id'/>" +
 		"</div>" +
 		
 		"<div class='form-field'>" +

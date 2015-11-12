@@ -39,7 +39,7 @@
 		</dependency>
 
 
-		<!-- Jackson JSON Mapper -->
+		<!-- Jackson JSON Mapper (@ResponseBody) -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>

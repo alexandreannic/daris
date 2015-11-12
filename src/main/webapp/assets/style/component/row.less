@@ -1,0 +1,200 @@
+@img-size: 39px;
+@cell-margin: .6%;
+
+.row-container {
+	padding: 0 10px;
+    margin: 0 7px;
+    .transition(all, .2s, ease);
+}
+.row {
+	background: white;
+	.transition(all, .2s, ease);
+	.box-shadow(0 1px 3px 0px #9b9b9b);
+	overflow: hidden;
+	width: 100%;
+	padding: 8px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin:0;
+
+    .pages-controller {
+        position: absolute;
+        top: -30px;
+        right: 62px;
+        font-size: 22px;
+        border-right: 1px solid #e6e6e6;
+        padding-right: 6px;
+    }
+}
+
+a > .row:hover {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    .box-shadow(0px 0px 2px 1px @color-main2);
+}
+
+    .row-content {
+        margin: -10px;
+        display: -webkit-flex;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        /*padding: 8px 18px 8px 12px;*/
+        padding: 0 4px 0 4px;
+        min-height: 52px;
+    }
+
+        // Cells
+        .row-img-empty {
+            height: @img-size + 1;
+            width: @img-size + 1;
+            margin-left: @cell-margin;
+            margin-right: @cell-margin;
+        }
+        .row-img-default {
+            flex: inherit;
+            text-align: center;
+            .border-radius();
+            color: darken(@color-main2, 30);
+            background: lighten(@color-main2, 10);
+            border: 1px solid lighten(@color-main2, 10);
+            height: @img-size;
+            line-height: @img-size;
+            width: @img-size;
+            margin-left: @cell-margin;
+            margin-right: @cell-margin;
+            font-size: 26px;
+        }
+        .row-cell-img {
+            height: @img-size;
+            width: @img-size;
+            margin-left: @cell-margin;
+            margin-right: @cell-margin;
+            .border-radius();
+            flex: inherit;
+            text-align: center;
+            overflow: hidden;
+            border: 1px solid lighten(@color-div, 10);
+        }
+            .row-img {
+                width: @img-size;
+                margin: 6px;
+            }
+        .row-cell {
+            flex: 1;
+            -webkit-flex: 1;
+            margin: 8px @cell-margin 8px @cell-margin;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            // Special columns
+            &.id {
+                width: 48px;
+                flex: inherit;
+                text-align: right;
+                //padding: 0 10px 0 10px;
+                font-weight: bold;
+            }
+            &.price {
+                flex: inherit;
+                text-align: right;
+                width: 100px;
+                //padding-right: 10px;
+            }
+            &.state {
+                flex: inherit;
+                width: 72px;
+                text-align: center;
+            }
+            &.gender {
+                width: 64px;
+                flex: inherit;
+            }
+            &.role {
+                flex: inherit;
+                width: 100px;
+            }
+            &.user {
+                flex: inherit;
+                width: 160px;
+            }
+            &.date {
+                flex: inherit;
+                width: 110px;
+            }
+            &.datetime {
+                flex: inherit;
+                width: 122px;
+            }
+            &.name {
+                flex: inherit;
+                width: 150px;
+            }
+            &.fullName {
+                flex: inherit;
+                width: 250px;
+            }
+        }
+        .exp-btns {
+            color: #808080;
+            font-size: 22px;
+            overflow: visible;
+            margin-left: auto;
+            text-align: right;
+            flex: inherit;
+            -webkit-flex: inherit;
+            width: 110px;
+        }
+
+
+// Controller
+
+.row-ctrl-content {
+    background: darken(@color-bg, 2);
+}
+    .row-filter {
+        width: 100%;
+        border-color: darken(@color-bg, 13);
+    }
+    .row-filter-clean {
+        &:before{content:"\f12d"}
+    }
+    .row-ctrl-img {
+        background: darken(@color-bg, 10);
+        color: darken(@color-bg, 40);
+        flex: inherit;
+        text-align: center;
+        .border-radius(50%);
+        height: 36px;
+        line-height: 36px;
+        width: 36px;
+        font-size: 26px;
+        font-family: 'FontAwesome';
+
+        &:before{
+            content:"\f013";
+        }
+    }
+        .fa-sort {
+            float: right;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+
+
+// Columns
+
+.row-cols {
+    color: lighten(@color-font, 11);
+	background: none;
+	.box-shadow(none);
+    padding: 4px 8px;
+    text-align: left !important;
+
+    .row-cell {
+        text-align: left !important;
+        font-weight: normal;
+    }
+}

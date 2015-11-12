@@ -2,6 +2,7 @@ package model.bean;
 
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -74,11 +75,13 @@ public class User
 	private Date			inscription;
 
 	/**
-	 * Table d'association : évènement - participant
+	 * List des évenements auxquels participe l'utilisateur
 	 */
-	@JsonIgnore
-	@ManyToMany(mappedBy = "participants")
-	private List<Event>		events;
+//	@JsonIgnore
+//	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "participants")
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE}, mappedBy = "participants")
+//	@ManyToMany(mappedBy="participants")
+//	private List<Event>		events;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "from")
@@ -92,8 +95,8 @@ public class User
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<User>		followed;
 
-//	@ManyToMany(mappedBy = "followed")
-//	private List<User>		followers;
+	// @ManyToMany(mappedBy = "followed")
+	// private List<User> followers;
 
 
 	public String getFullName()
@@ -132,17 +135,16 @@ public class User
 	}
 
 
-//	public List<User> getFollowers()
-//	{
-//		return followers;
-//	}
-//
-//
-//	public void setFollowers(List<User> followers)
-//	{
-//		this.followers = followers;
-//	}
-
+	// public List<User> getFollowers()
+	// {
+	// return followers;
+	// }
+	//
+	//
+	// public void setFollowers(List<User> followers)
+	// {
+	// this.followers = followers;
+	// }
 
 	public void setId(Long id)
 	{
@@ -256,16 +258,16 @@ public class User
 	{
 		this.inscription = inscription;
 	}
-
-
-	public List<Event> getEvents()
-	{
-		return events;
-	}
-
-
-	public void setEvents(List<Event> events)
-	{
-		this.events = events;
-	}
+//
+//
+//	public List<Event> getEvents()
+//	{
+//		return events;
+//	}
+//
+//
+//	public void setEvents(List<Event> events)
+//	{
+//		this.events = events;
+//	}
 }

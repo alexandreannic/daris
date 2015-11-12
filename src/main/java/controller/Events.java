@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import model.bean.Activity;
 import model.bean.Event;
 import model.bean.User;
+import model.dao.DAO_Activity;
 import model.dao.DAO_Event;
+import model.dao.DAO_Locality;
+import model.dao.DAO_User;
 import utils.Messages_i18n;
 
 
@@ -33,9 +37,35 @@ public class Events
 	DAO_Event				dao_event;
 
 	@Autowired
+	DAO_Locality			dao_locality;
+	
+	@Autowired
+	DAO_Activity			dao_activity;
+	
+	@Autowired
+	DAO_User				dao_user;
+	
+	@Autowired
 	private Messages_i18n	messages;
 
 
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(ModelMap pModel, HttpSession session, RedirectAttributes flash)
+	{
+		// Vérifie que l'utilisateur est connecté
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.pleaseConnect"));
+			return "redirect:/";
+		}
+		
+		List<Event> events = dao_event.findAll();
+		pModel.addAttribute("events", events);
+		
+		return "event/index";
+	}
+	
+	
 	/**
 	 * Affiche un évènement particulier
 	 */
@@ -59,12 +89,33 @@ public class Events
 
 		pModel.addAttribute("event", event);
 		pModel.addAttribute("activities", event.getActivities());
-		pModel.addAttribute("participantList", event.getParticipants());
+		pModel.addAttribute("participants", event.getParticipants());
 
 		return "event/view";
 	}
 
-
+	/**
+	 * 
+	 * @param info
+	 * @return
+	 */
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String create(ModelMap pModel, HttpSession session, RedirectAttributes flash)
+	{
+		// Vérifie que l'utilisateur est connecté
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.pleaseConnect"));
+			return "redirect:/";
+		}
+		
+		// Envoi un bean vide lié au formulaire
+		pModel.addAttribute("event", new Event());
+				
+		return "event/create";
+	}
+	
+	
 	/**
 	 * Ajout d'un nouvel évènement après validation du formulaire de création
 	 */
@@ -73,26 +124,27 @@ public class Events
 	public String addEvent(@Valid Event event, BindingResult result, RedirectAttributes flash, ModelMap pModel,
 			HttpSession session)
 	{
-		System.out.println("ADDD ! + ");
-		for (Activity a : event.getActivities()) {
-			System.out.println(a.getFrom());
-			// System.out.println(a.getLocality().getName());
-		}
 		if (result.hasErrors()) {
 			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.errorOccurred"));
 			return "redirect:/dashboard";
 		}
+		
+		// Store les activités avant de store l'événement 
+		for (Activity a : event.getActivities()) {
+			dao_activity.create(a);
+		}
+		
+		// Link les participants
+		for(User u : event.getParticipants()) {
+			u = dao_user.find(u.getId());
+			dao_user.update(u);
+		}
 
 		// ajouter l'évènement
-		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("user.controller.success.signup"));
-		dao_event.create(event);
-
-		// préparer l'affichage de l'évènement créé
-		pModel.addAttribute("event", event);
-		pModel.addAttribute("activityList", event.getActivities());
-		pModel.addAttribute("participantList", event.getParticipants());
-
-		return "viewEvent";
+		event = dao_event.create(event);
+		flash.addFlashAttribute("ALERT_SUCCESS", messages.get("event.controller.create.success"));
+		
+		return "redirect:/event/view/" + event.getId();
 	}
 
 
