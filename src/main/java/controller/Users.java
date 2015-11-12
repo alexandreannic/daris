@@ -55,7 +55,8 @@ public class Users
 	@RequestMapping(value = "/view/{id}")
 	public String view(@PathVariable("id") Long id, HttpSession session)
 	{
-
+		User follow = dao_user.findById(id);
+		session.setAttribute("follow", follow);
 		return "user/view";
 	}
 
