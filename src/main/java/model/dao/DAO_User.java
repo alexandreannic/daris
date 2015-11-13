@@ -61,6 +61,20 @@ public class DAO_User extends DAO<User, Long>
 		return (List<User>) all;
 	}
 	
+	public boolean isFollowing(User user, User follow)
+	{
+		int count = (int) em.createQuery(
+				"SELECT COUNT(u) "
+			+ 	"FROM User u "
+			+	"WHERE u.id = " +  user.getId()
+			+	"WHERE :user in ELEMENTS(u.followed)"
+			)
+		.setParameter("user", follow)
+		.getSingleResult();
+		
+		return (count > 0);
+	}
+	
 //	public Long getCountByDate(Calendar calendar)
 //	{
 //		Date date = new Date(calendar.getTimeInMillis();

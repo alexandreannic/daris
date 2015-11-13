@@ -5,34 +5,6 @@ var event_user_input = $('#event-user-input');
 var event_user_none = $('#event-user-none');
 var event_user_index = ${event_edited.participantsCount};
 
-event_user_input.autocomplete({
-	source: function(request, response) {
-		$.ajax({
-			url: '<c:url value='/user/getUsers'/>',
-			dataType: 'json',
-			data: {info: request.term},
-			success: function(data) {
-				response($.map(data, function(item) {
-					return {
-						id: item.id,
-						label: item.fullName,
-						value: item.fullName,
-						picture: item.picture,
-						fullName: item.fullName
-					  }
-				}));
-			}
-		});
-	},
-	minLength: 1,
-	select: function(event, ui) {
-		if($('#followed' + ui.item.id).length == 0) {
-			draw_user(ui.item);
-		}
-		return false;
-	}
-});
-
 function draw_user(user)
 {
 	var img;
@@ -70,11 +42,11 @@ function draw_user(user)
 
 
 <%-- Si on édite un événemlent, récupère les activités --%> 
-<c:if test='${event_edited.participantsCount != 0}'>
+<c:if test='${event.participantsCount != 0}'>
 	$.ajax({
 		url: '<c:url value='/user/getUsersByEventId'/>',
 		dataType: 'json',
-		data: {event_id: '${event_edited.id}'},
+		data: {event_id: '${event.id}'},
 		success: function(data) {
 			$.each(data, function(index, value) {
 				draw_user(value);

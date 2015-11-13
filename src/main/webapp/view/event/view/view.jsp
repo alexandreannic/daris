@@ -8,7 +8,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <%-- bloack de la fiche détaillée de l'événement --%>
-<div class="col-xs-12 col-md-8">
+<div class="col-xs-12 col-md-6">
 	<div class="panel">
 	
 		<h1 class="panel-title">
@@ -24,70 +24,24 @@
 	</div>
 </div>
 
-<%-- bloack de la carte --%>
-<div class="col-xs-12 col-md-8">
-	<div id="map" class="panel"></div>
+
+<%-- Right column --%>
+<div class='col-xs-12 col-md-6'>
 	
-	<script type="text/javascript">
-		var map;
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-				center : {
-					lat : 100,
-					lng : 1100
-				},
-				zoom : 8
-			});
-		}
-	</script>
-</div>
-
-
-
-<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA93ma1bj-uq8h9BoDcwQgee7EcKPhX778=initMap">
-</script>
-
-<%-- bloack des activités --%>
-<div class="col-xs-12 col-md-8">
-	<div class="panel">
-	
-		<h1 class="panel-title"><spring:message code='event.view.activities' /></h1>
+	<%-- Pannel users --%>
+	<div class='panel'>
+		<h1 class='panel-title'>
+			<input id='event-user-input' class='input-with-icon' placeholder="Rechercher une personne"/><i class='fa-search input-icon'></i>
+		</h1>
 		
-		<c:forEach items="${activities}" var="activity">
-		
-			<%-- visualisation d'une activité (lien vers la localié + horraires) --%>
-			<c:url value="/locality/view" var="url">
-				<c:param name="localityId" value="${activity.id}" />
-			</c:url>
-			
-			<a href="${url}"><c:out value="${activity.locality.name}" /></a>
-			<br />
-			
-			<c:out value="${activity.from}" /> - <c:out value="${activity.to}" />
-			<br />
-			
-		</c:forEach>
+		<div id='event-users'>
+			<em id='event-user-none'>Aucun membre ajouté</em>
+		</div>
 	</div>
+	
 </div>
 
-<%-- bloack des participants --%>
-<!-- <div class="col-xs-12 col-md-8"> -->
-<!-- 	<div class="panel"> -->
-	
-<%-- 		<h1 class="panel-title"><spring:message code='event.view.participants' /></h1> --%>
-		
-<%-- 		<c:forEach items="${participantList}" var="participant"> --%>
-		
-<%-- 			<%-- visualisation des participants --%> --%>
-<%-- 			<c:url value="/user/view" var="url"> --%>
-<%-- 				<c:param name="userId" value="${participant.userId}" /> --%>
-<%-- 			</c:url> --%>
-			
-<%-- 			<a href="${url}"><c:out value="${participant.name}" /></a> --%>
-<!-- 			<br /> -->
-			
-<%-- 		</c:forEach> --%>
-		
-<!-- 	</div> -->
-<!-- </div> -->
+
+
+<%@ include file='_script-add_user.jsp'%>
+<%@ include file='_script.jsp'%>

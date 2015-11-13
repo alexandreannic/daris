@@ -15,5 +15,13 @@ import model.bean.Activity;
 @Repository
 public class DAO_Activity extends DAO<Activity, Long>
 {
-
+	public List<Activity> findByEventId(Long id)
+	{
+//		List results = em.createQuery(
+//				"SELECT a "
+//			+	"FROM Activity a, Event e "
+//			+ 	"WHERE a.id = e.activity."
+//		);
+		return null;
+	}
 }

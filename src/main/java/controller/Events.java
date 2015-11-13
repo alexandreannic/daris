@@ -90,8 +90,6 @@ public class Events
 		}
 
 		pModel.addAttribute("event", event);
-		pModel.addAttribute("activities", event.getActivities());
-		pModel.addAttribute("participants", event.getParticipants());
 
 		return "event/view";
 	}
@@ -116,14 +114,8 @@ public class Events
 
 		pModel.addAttribute("event_edited", event);
 		
-		for(Activity e : event.getActivities()) {
-			System.out.println("--> " + e.getLocality().getName());
-		}
-		
 		// Envoi un bean vide lié au formulaire
 		pModel.addAttribute("event", new Event());
-//		pModel.addAttribute("activities", event.getActivities());
-//		pModel.addAttribute("participants", event.getParticipants());
 
 		return "event/edit";
 	}
@@ -183,9 +175,10 @@ public class Events
 	/**
 	 * Supprimer un événement
 	 */
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String remove(@RequestParam(value = "eventId") final Integer eventId, HttpSession session,
-			RedirectAttributes flash, ModelMap pModel)
+	@Transactional
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String remove(@RequestParam(value = "id") final Long id, HttpSession session,
+			RedirectAttributes flash)
 	{
 		// Vérifie que l'utilisateur est connecté
 		User user = (User) session.getAttribute("user");
@@ -195,9 +188,10 @@ public class Events
 		}
 
 		// Supprimer l'événement
-		dao_event.remove(eventId);
+		dao_event.delete(id);
+		flash.addFlashAttribute("ALERT_SUCCESS", "Suppression réussie");
 
-		return "dashboard";
+		return "redirect:/event/index";
 	}
 
 

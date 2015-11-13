@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import model.bean.Event;
 import model.bean.Locality;
 import model.bean.User;
 import model.bean.User_stats;
+import model.dao.DAO_Event;
 import model.dao.DAO_User;
 import utils.Messages_i18n;
 import utils.Utils;
@@ -36,6 +38,9 @@ public class Users
 {
 	@Autowired
 	private DAO_User		dao_user;
+	
+	@Autowired
+	private DAO_Event 		dao_event;
 
 	@Autowired
 	private Messages_i18n	messages;
@@ -52,11 +57,26 @@ public class Users
 	}
 
 	
-	@RequestMapping(value = "/view/{id}")
-	public String view(@PathVariable("id") Long id, HttpSession session)
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+	public String view(@PathVariable("id") Long id, HttpSession session, RedirectAttributes flash)
 	{
+		// Vérifie que l'utilisateur est connecté
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.pleaseConnect"));
+			return "redirect:/";
+		}
+		
+		User viewed = dao_user.findById(id);
+		if(viewed == null) {
+			flash.addFlashAttribute("ALERT_ERROR", messages.get("view.ressourceNotExists"));
+			return "redirect:/dashboard";
+		}
+		
 		User follow = dao_user.findById(id);
 		session.setAttribute("follow", follow);
+		session.setAttribute("isFollowing", dao_user.isFollowing(user, viewed));
+		
 		return "user/view";
 	}
 
@@ -194,5 +214,12 @@ public class Users
 	public @ResponseBody List<User> getUsers(@RequestParam(value="info") String info)
 	{
         return dao_user.findAccordingTo(info);
+	}
+	
+	@RequestMapping(value = "/getUsersByEventId", method = RequestMethod.GET)
+	public @ResponseBody List<User> getUsersByEventId(@RequestParam(value="event_id") Long id)
+	{
+		Event e = dao_event.findById(id);
+        return e.getParticipants();
 	}
 }

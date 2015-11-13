@@ -57,7 +57,7 @@ function create_event(event)
 
 event_search.keyup(function() {
 	load_events(event_search.val());
-	$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+	$("html, body").animate({ scrollTop: $(document).height() }, 0);
 });
 
 load_events("");

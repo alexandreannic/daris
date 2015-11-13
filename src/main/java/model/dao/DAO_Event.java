@@ -117,9 +117,9 @@ public class DAO_Event extends DAO<Event, Long>
 		else 					return results;
 	}
 	
-	public void remove(Integer eventID){
-		// supprimer d'abord les activités liés
-		
-		// supprmier l'événement en question
-	}
+//	public void remove(Long eventID){
+//		// supprimer d'abord les activités liés
+//		
+//		// supprmier l'événement en question
+//	}
 }
